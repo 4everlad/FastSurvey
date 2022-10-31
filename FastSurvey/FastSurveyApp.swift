@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftUINavigator
 
 @main
 struct FastSurveyApp: App {
+    
     var body: some Scene {
         WindowGroup {
             TabController()

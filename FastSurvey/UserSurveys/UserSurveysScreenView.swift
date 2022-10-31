@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftUINavigator
 
-struct UserSurveyScreenView: View {
+struct UserSurveysScreenView: View, IItemView {
+    var listener: INavigationContainer?
+    
     var body: some View {
         Text("UserSurveyScreenView")
     }
@@ -15,6 +18,6 @@ struct UserSurveyScreenView: View {
 
 struct UserSurveyScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSurveyScreenView()
+        UserSurveysScreenView()
     }
 }

@@ -8,23 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */; };
-		D7C3C268290FFD1C00D842F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C267290FFD1C00D842F4 /* ContentView.swift */; };
 		D7C3C26A290FFD1F00D842F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C3C269290FFD1F00D842F4 /* Assets.xcassets */; };
 		D7C3C26D290FFD1F00D842F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C3C26C290FFD1F00D842F4 /* Preview Assets.xcassets */; };
 		D7C3C274291000A700D842F4 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C273291000A700D842F4 /* TabController.swift */; };
 		D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */; };
-		D7C3C27B2910024000D842F4 /* UserSurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C27A2910024000D842F4 /* UserSurveyScreenView.swift */; };
+		D7C3C27B2910024000D842F4 /* UserSurveysScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */; };
+		D7C3C27E29100F9300D842F4 /* SwiftUINavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D7C3C27D29100F9300D842F4 /* SwiftUINavigator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D7C3C262290FFD1C00D842F4 /* FastSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastSurveyApp.swift; sourceTree = "<group>"; };
-		D7C3C267290FFD1C00D842F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7C3C269290FFD1F00D842F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7C3C26C290FFD1F00D842F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7C3C273291000A700D842F4 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFeedScreenView.swift; sourceTree = "<group>"; };
-		D7C3C27A2910024000D842F4 /* UserSurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurveyScreenView.swift; sourceTree = "<group>"; };
+		D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurveysScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C3C27E29100F9300D842F4 /* SwiftUINavigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,6 @@
 				D7C3C276291001A700D842F4 /* SurveyFeed */,
 				D7C3C2752910017E00D842F4 /* Auth */,
 				D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */,
-				D7C3C267290FFD1C00D842F4 /* ContentView.swift */,
 				D7C3C269290FFD1F00D842F4 /* Assets.xcassets */,
 				D7C3C26B290FFD1F00D842F4 /* Preview Content */,
 				D7C3C273291000A700D842F4 /* TabController.swift */,
@@ -95,7 +94,7 @@
 		D7C3C277291001C600D842F4 /* UserSurveys */ = {
 			isa = PBXGroup;
 			children = (
-				D7C3C27A2910024000D842F4 /* UserSurveyScreenView.swift */,
+				D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */,
 			);
 			path = UserSurveys;
 			sourceTree = "<group>";
@@ -116,6 +115,9 @@
 			dependencies = (
 			);
 			name = FastSurvey;
+			packageProductDependencies = (
+				D7C3C27D29100F9300D842F4 /* SwiftUINavigator */,
+			);
 			productName = FastSurvey;
 			productReference = D7C3C262290FFD1C00D842F4 /* FastSurvey.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +146,9 @@
 				Base,
 			);
 			mainGroup = D7C3C259290FFD1C00D842F4;
+			packageReferences = (
+				D7C3C27C29100F9300D842F4 /* XCRemoteSwiftPackageReference "swiftuinavigator" */,
+			);
 			productRefGroup = D7C3C263290FFD1C00D842F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -170,10 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C3C268290FFD1C00D842F4 /* ContentView.swift in Sources */,
 				D7C3C274291000A700D842F4 /* TabController.swift in Sources */,
 				D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */,
-				D7C3C27B2910024000D842F4 /* UserSurveyScreenView.swift in Sources */,
+				D7C3C27B2910024000D842F4 /* UserSurveysScreenView.swift in Sources */,
 				D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +381,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D7C3C27C29100F9300D842F4 /* XCRemoteSwiftPackageReference "swiftuinavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/anioutkazharkova/swiftuinavigator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D7C3C27D29100F9300D842F4 /* SwiftUINavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7C3C27C29100F9300D842F4 /* XCRemoteSwiftPackageReference "swiftuinavigator" */;
+			productName = SwiftUINavigator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D7C3C25A290FFD1C00D842F4 /* Project object */;
 }

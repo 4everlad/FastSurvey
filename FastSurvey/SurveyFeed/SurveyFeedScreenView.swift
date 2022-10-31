@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftUINavigator
 
-struct SurveyFeedScreenView: View {
+struct SurveyFeedScreenView: View, IItemView {
+    var listener: INavigationContainer?
+    
     var body: some View {
         Text("SurveyFeedScreenView")
     }
