@@ -14,6 +14,10 @@
 		D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */; };
 		D7C3C27B2910024000D842F4 /* UserSurveysScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */; };
 		D7C3C27E29100F9300D842F4 /* SwiftUINavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D7C3C27D29100F9300D842F4 /* SwiftUINavigator */; };
+		D7C3C28029104A4800D842F4 /* SurveyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C27F29104A4800D842F4 /* SurveyListView.swift */; };
+		D7C3C28229104A7E00D842F4 /* SurveyFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */; };
+		D7C3C28629104E1400D842F4 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28529104E1400D842F4 /* Survey.swift */; };
+		D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C287291131E300D842F4 /* SurveyCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D7C3C273291000A700D842F4 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFeedScreenView.swift; sourceTree = "<group>"; };
 		D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurveysScreenView.swift; sourceTree = "<group>"; };
+		D7C3C27F29104A4800D842F4 /* SurveyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListView.swift; sourceTree = "<group>"; };
+		D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFeedViewModel.swift; sourceTree = "<group>"; };
+		D7C3C28529104E1400D842F4 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		D7C3C287291131E300D842F4 /* SurveyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 		D7C3C264290FFD1C00D842F4 /* FastSurvey */ = {
 			isa = PBXGroup;
 			children = (
+				D7C3C28429104D8000D842F4 /* Models */,
 				D7C3C277291001C600D842F4 /* UserSurveys */,
 				D7C3C276291001A700D842F4 /* SurveyFeed */,
 				D7C3C2752910017E00D842F4 /* Auth */,
@@ -86,7 +95,7 @@
 		D7C3C276291001A700D842F4 /* SurveyFeed */ = {
 			isa = PBXGroup;
 			children = (
-				D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */,
+				D7C3C28329104D1600D842F4 /* Views */,
 			);
 			path = SurveyFeed;
 			sourceTree = "<group>";
@@ -97,6 +106,25 @@
 				D7C3C27A2910024000D842F4 /* UserSurveysScreenView.swift */,
 			);
 			path = UserSurveys;
+			sourceTree = "<group>";
+		};
+		D7C3C28329104D1600D842F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */,
+				D7C3C27F29104A4800D842F4 /* SurveyListView.swift */,
+				D7C3C287291131E300D842F4 /* SurveyCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7C3C28429104D8000D842F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */,
+				D7C3C28529104E1400D842F4 /* Survey.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,9 +204,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C3C274291000A700D842F4 /* TabController.swift in Sources */,
+				D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */,
 				D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */,
+				D7C3C28629104E1400D842F4 /* Survey.swift in Sources */,
+				D7C3C28229104A7E00D842F4 /* SurveyFeedViewModel.swift in Sources */,
 				D7C3C27B2910024000D842F4 /* UserSurveysScreenView.swift in Sources */,
 				D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */,
+				D7C3C28029104A4800D842F4 /* SurveyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ struct FastSurveyApp: App {
     var body: some Scene {
         WindowGroup {
             TabController()
+                .environmentObject(SurveyFeedViewModel())
         }
     }
 }
