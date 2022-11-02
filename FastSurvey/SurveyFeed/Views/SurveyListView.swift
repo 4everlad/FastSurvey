@@ -9,28 +9,6 @@ import Foundation
 import SwiftUI
 import SwiftUINavigator
 
-//struct MaxWidthPreferenceKey: PreferenceKey {
-//    static var defaultValue: CGFloat = .zero
-//    
-//    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-//        let nextValue = nextValue()
-//        
-//        guard nextValue > value else { return }
-//        
-//        value = nextValue
-//    }
-//}
-//
-//struct ItemGeometry: View {
-//    var body: some View {
-//        GeometryReader { geometry in
-//            Color.clear
-//                .preference(key: MaxWidthPreferenceKey.self, value: geometry.size.width)
-//        }
-//        .scaledToFill()
-//    }
-//}
-
 struct SurveysListView: View, IItemView {
     var listener: INavigationContainer?
     
@@ -41,6 +19,9 @@ struct SurveysListView: View, IItemView {
             VStack {
                 ForEach(viewModel.surveys) { item in
                     SurveyCellView(survey: item)
+                        .onTapGesture {
+                            listener?.push(view: SurveyScreenView(survey: item))
+                        }
                         .listRowSeparator(.hidden)
                 }
             }
