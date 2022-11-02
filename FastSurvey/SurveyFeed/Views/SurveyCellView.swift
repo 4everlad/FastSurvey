@@ -29,7 +29,7 @@ struct SurveyCellView: View {
                     .font(.system(size: 12, design: .rounded))
             }
             
-            EmptyView()
+            Spacer()
         }
         .padding(16)
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 1))
