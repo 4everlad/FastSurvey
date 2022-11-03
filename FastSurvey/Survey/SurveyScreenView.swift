@@ -12,7 +12,7 @@ import SwiftUINavigator
 struct SurveyScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    var survey: Survey
+    @State var survey: Survey
     @State var isUp = false
     @State var isDown = false
     
@@ -26,34 +26,7 @@ struct SurveyScreenView: View, IItemView {
                     .font(.title)
                 Text(survey.description)
                 
-                HStack(alignment: .center, spacing: 64) {
-                    VoteButton (
-                        isVoted: $isUp,
-                        counter: survey.upVotes,
-                        text: "YES"
-                    ) {
-                        self.isUp.toggle()
-                        if isUp == isDown {
-                            self.isDown.toggle()
-                        }
-                    }
-                    .frame(maxHeight: .infinity)
-                    
-                    VoteButton (
-                        isVoted: $isDown,
-                        counter: survey.downVotes,
-                        text: "NO"
-                    ) {
-                        self.isDown.toggle()
-                        if isUp == isDown {
-                            self.isUp.toggle()
-                        }
-                    }
-                    .frame(maxHeight: .infinity)
-                    
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxHeight: 100)
+                VoteView( survey: $survey, isUp: $isUp, isDown: $isDown)
                 
                 Spacer()
             }

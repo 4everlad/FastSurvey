@@ -24,12 +24,15 @@ struct VoteButton: View {
                     Text("\(counter)")
                         .font(.subheadline)
                 }
+                .padding(.vertical)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(minHeight: 0, maxHeight: 60)
                 .foregroundColor(.white)
                 .background(.blue)
                 .cornerRadius(8)
-                .buttonStyle(PlainButtonStyle())
+                .fixedSize(horizontal: false, vertical: true)
             }
-            
+
         } else {
             Button(action: clicked)  {
                 VStack(alignment: .center, spacing: 5) {
@@ -38,11 +41,13 @@ struct VoteButton: View {
                     Text("\(counter)")
                         .font(.subheadline)
                 }
+                .padding(.vertical)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(minHeight: 0, maxHeight: 60)
                 .foregroundColor(.blue)
                 .background(.white)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 2))
-                .controlSize(.large)
-                .buttonStyle(PlainButtonStyle())
+                .fixedSize(horizontal: false, vertical: true)
             }
         }
     }

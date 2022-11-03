@@ -20,6 +20,7 @@
 		D7C3C28229104A7E00D842F4 /* SurveyFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */; };
 		D7C3C28629104E1400D842F4 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28529104E1400D842F4 /* Survey.swift */; };
 		D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C287291131E300D842F4 /* SurveyCellView.swift */; };
+		D7F95EFB2912F81B00645875 /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F95EFA2912F81B00645875 /* VoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFeedViewModel.swift; sourceTree = "<group>"; };
 		D7C3C28529104E1400D842F4 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		D7C3C287291131E300D842F4 /* SurveyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCellView.swift; sourceTree = "<group>"; };
+		D7F95EFA2912F81B00645875 /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				D76502FF291266E60054237A /* SurveyScreenView.swift */,
 				D76503012912C1950054237A /* VoteButton.swift */,
+				D7F95EFA2912F81B00645875 /* VoteView.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				D7C3C274291000A700D842F4 /* TabController.swift in Sources */,
 				D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */,
+				D7F95EFB2912F81B00645875 /* VoteView.swift in Sources */,
 				D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */,
 				D76503022912C1950054237A /* VoteButton.swift in Sources */,
 				D7650300291266E60054237A /* SurveyScreenView.swift in Sources */,
