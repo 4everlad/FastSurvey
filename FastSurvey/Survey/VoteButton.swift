@@ -16,39 +16,21 @@ struct VoteButton: View {
     var clicked: (() -> Void)
 
     var body: some View {
-        if isVoted {
-            Button(action: clicked) {
-                VStack(alignment: .center, spacing: 5) {
-                    Text(text)
-                        .font(.headline)
-                    Text("\(counter)")
-                        .font(.subheadline)
-                }
-                .padding(.vertical)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .frame(minHeight: 0, maxHeight: 60)
-                .foregroundColor(.white)
-                .background(.blue)
-                .cornerRadius(8)
-                .fixedSize(horizontal: false, vertical: true)
+        Button(action: clicked) {
+            VStack(alignment: .center, spacing: 5) {
+                Text(text)
+                    .font(.headline)
+                Text("\(counter)")
+                    .font(.subheadline)
             }
-
-        } else {
-            Button(action: clicked)  {
-                VStack(alignment: .center, spacing: 5) {
-                    Text(text)
-                        .font(.headline)
-                    Text("\(counter)")
-                        .font(.subheadline)
-                }
-                .padding(.vertical)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .frame(minHeight: 0, maxHeight: 60)
-                .foregroundColor(.blue)
-                .background(.white)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 2))
-                .fixedSize(horizontal: false, vertical: true)
-            }
+            .padding(.vertical)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(minHeight: 0, maxHeight: 60)
+            .foregroundColor(isVoted ? .white : .blue)
+            .background(isVoted ? .blue : .white)
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 3))
+            .cornerRadius(8)
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

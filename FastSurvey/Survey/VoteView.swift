@@ -16,7 +16,6 @@ struct VoteView: View {
     
     var body: some View {
         HStack {
-            
             VoteButton (
                 isVoted: $isUp,
                 counter: survey.upVotes,
@@ -28,7 +27,6 @@ struct VoteView: View {
                 }
             }
             
-            
             VoteButton (
                 isVoted: $isDown,
                 counter: survey.downVotes,
@@ -39,9 +37,7 @@ struct VoteView: View {
                     self.isUp.toggle()
                 }
             }
-            
         }
-        
     }
 }
 

@@ -25,9 +25,7 @@ struct SurveyScreenView: View, IItemView {
                 Text(survey.title)
                     .font(.title)
                 Text(survey.description)
-                
                 VoteView( survey: $survey, isUp: $isUp, isDown: $isDown)
-                
                 Spacer()
             }
             .navigationBarItems(leading:
