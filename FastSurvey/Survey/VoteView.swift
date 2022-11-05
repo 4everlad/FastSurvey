@@ -15,7 +15,7 @@ struct VoteView: View {
     @Binding var isDown: Bool
     
     var body: some View {
-        HStack {
+        HStack(spacing: 64) {
             VoteButton (
                 isVoted: $isUp,
                 counter: survey.upVotes,

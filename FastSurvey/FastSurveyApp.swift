@@ -13,9 +13,10 @@ struct FastSurveyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationContainerView(transition: Transition.custom(.slide), content: {
-                TabController()
-            })
+//            NavigationContainerView(transition: Transition.custom(.slide), content: {
+//                TabController()
+//            })
+            AuthScreenView()
             .environmentObject(SurveyFeedViewModel())
         }
     }

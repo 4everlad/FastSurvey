@@ -28,8 +28,8 @@ struct VoteButton: View {
             .frame(minHeight: 0, maxHeight: 60)
             .foregroundColor(isVoted ? .white : .blue)
             .background(isVoted ? .blue : .white)
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 3))
-            .cornerRadius(8)
+            .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.blue, lineWidth: 3))
+            .cornerRadius(30)
             .fixedSize(horizontal: false, vertical: true)
         }
     }

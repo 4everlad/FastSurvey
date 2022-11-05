@@ -16,8 +16,8 @@ struct SurveyScreenView: View, IItemView {
     @State var isUp = false
     @State var isDown = false
     
-    @State var widthButton: CGFloat = 100
-    @State var heightButton: CGFloat = 50
+//    @State var widthButton: CGFloat = 100
+//    @State var heightButton: CGFloat = 50
     
     var body: some View {
         NavigationView {
