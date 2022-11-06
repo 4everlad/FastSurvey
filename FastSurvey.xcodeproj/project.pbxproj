@@ -16,6 +16,8 @@
 		D73E88FA2916DC5F00F29CE6 /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E88F92916DC5F00F29CE6 /* PickerButton.swift */; };
 		D73E88FC2916DC7D00F29CE6 /* BottomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E88FB2916DC7D00F29CE6 /* BottomPickerView.swift */; };
 		D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89012916DD1D00F29CE6 /* LoginView.swift */; };
+		D73E89062917038400F29CE6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89052917038400F29CE6 /* SignupViewModel.swift */; };
+		D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8907291710F100F29CE6 /* LoginViewModel.swift */; };
 		D7650300291266E60054237A /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* SurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */; };
@@ -42,6 +44,8 @@
 		D73E88F92916DC5F00F29CE6 /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		D73E88FB2916DC7D00F29CE6 /* BottomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPickerView.swift; sourceTree = "<group>"; };
 		D73E89012916DD1D00F29CE6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D73E89052917038400F29CE6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		D73E8907291710F100F29CE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D76502FF291266E60054237A /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D7C3C262290FFD1C00D842F4 /* FastSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +92,25 @@
 				D73E88FB2916DC7D00F29CE6 /* BottomPickerView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D73E89032917035200F29CE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D73E89012916DD1D00F29CE6 /* LoginView.swift */,
+				D73E88F02916DAAA00F29CE6 /* SignupView.swift */,
+				D73E88EB2916D8E900F29CE6 /* AuthScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D73E89042917036700F29CE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D73E89052917038400F29CE6 /* SignupViewModel.swift */,
+				D73E8907291710F100F29CE6 /* LoginViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D76502FE291266C90054237A /* Survey */ = {
@@ -145,9 +168,8 @@
 		D7C3C2752910017E00D842F4 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D73E88EB2916D8E900F29CE6 /* AuthScreenView.swift */,
-				D73E88F02916DAAA00F29CE6 /* SignupView.swift */,
-				D73E89012916DD1D00F29CE6 /* LoginView.swift */,
+				D73E89042917036700F29CE6 /* Models */,
+				D73E89032917035200F29CE6 /* Views */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -265,7 +287,9 @@
 			files = (
 				D73E88F82916DC3F00F29CE6 /* IconSecureField.swift in Sources */,
 				D73E88F62916DC1C00F29CE6 /* IconTextField.swift in Sources */,
+				D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */,
 				D73E88F32916DB8500F29CE6 /* Int+String.swift in Sources */,
+				D73E89062917038400F29CE6 /* SignupViewModel.swift in Sources */,
 				D73E88F12916DAAA00F29CE6 /* SignupView.swift in Sources */,
 				D7C3C274291000A700D842F4 /* TabController.swift in Sources */,
 				D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */,

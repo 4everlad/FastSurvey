@@ -20,9 +20,9 @@ struct AuthScreenView: View {
     var body: some View {
         switch authType {
         case .signup:
-            SignupView()
+            SignupView(authType: $authType)
         case .login:
-            LoginView()
+            LoginView(authType: $authType)
         }
     }
 }
