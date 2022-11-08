@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import SwiftUINavigator
 
 struct SignupView: View {
     
     @StateObject var viewModel: SignupViewModel = .init()
+    @Binding var isAuthed: Bool
     @Binding var authType: AuthType
     
     @State private var showingBottomAge = false
@@ -71,7 +73,9 @@ struct SignupView: View {
             Text(viewModel.errorMessage)
             
             Button {
-                viewModel.makeSignup()
+                viewModel.makeSignup(completion: {
+                    self.isAuthed = true
+                })
             } label: {
                 if !viewModel.isLoading {
                     Text("Sign Up")

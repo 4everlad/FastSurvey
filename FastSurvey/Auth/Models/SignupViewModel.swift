@@ -28,16 +28,17 @@ final class SignupViewModel: ObservableObject {
     private(set)var allAges: [Int] = Array<Int>(18...99)
     private(set)var allCountries = ["ru", "en", "us"]
     
-    func makeSignup() {
+    func makeSignup(completion: @escaping ()->(Void)) {
         
         isLoading = true
         let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
         
         let params = SignupParams(password: password, data: userData)
         SignupRequest(params: params).makeSignup(completion: { message in
-            self.isLoading = false
             DispatchQueue.main.async {
+                self.isLoading = false
                 self.errorMessage = message
+                completion()
             }
         })
     }

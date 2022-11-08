@@ -16,7 +16,9 @@ struct FastSurveyApp: App {
 //            NavigationContainerView(transition: Transition.custom(.slide), content: {
 //                TabController()
 //            })
-            AuthScreenView()
+            NavigationContainerView(transition: Transition.custom(.slide)) {
+                AuthScreenView()
+            }
             .environmentObject(SurveyFeedViewModel())
         }
     }
