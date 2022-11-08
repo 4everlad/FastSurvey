@@ -73,7 +73,13 @@ struct SignupView: View {
             Button {
                 viewModel.makeSignup()
             } label: {
-                Text("Sign Up")
+                if !viewModel.isLoading {
+                    Text("Sign Up")
+                } else {
+                    ProgressView()
+                        .tint(.white)
+                        .scaleEffect(1.5, anchor: .center)
+                }
             }
             .padding(.vertical)
             .frame(minWidth: 0, maxWidth: .infinity)

@@ -23,6 +23,8 @@
 		D73E890F2917ED3400F29CE6 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890E2917ED3400F29CE6 /* JSONHelper.swift */; };
 		D73E89122917F65900F29CE6 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89112917F65900F29CE6 /* SignupRequest.swift */; };
 		D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89142917F87400F29CE6 /* SignupJSON.swift */; };
+		D73E8918291AA48900F29CE6 /* View+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8917291AA48900F29CE6 /* View+Loading.swift */; };
+		D73E891B291AA4D800F29CE6 /* LoadingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E891A291AA4D800F29CE6 /* LoadingProgressView.swift */; };
 		D7650300291266E60054237A /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* SurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */; };
@@ -57,6 +59,8 @@
 		D73E89112917F65900F29CE6 /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
 		D73E89142917F87400F29CE6 /* SignupJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupJSON.swift; sourceTree = "<group>"; };
 		D73E89162917FE0000F29CE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D73E8917291AA48900F29CE6 /* View+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Loading.swift"; sourceTree = "<group>"; };
+		D73E891A291AA4D800F29CE6 /* LoadingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProgressView.swift; sourceTree = "<group>"; };
 		D76502FF291266E60054237A /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D7C3C262290FFD1C00D842F4 /* FastSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +94,7 @@
 			children = (
 				D73E88EE2916D9EF00F29CE6 /* View+HalfSheet.swift */,
 				D73E88F22916DB8500F29CE6 /* Int+String.swift */,
+				D73E8917291AA48900F29CE6 /* View+Loading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,6 +157,14 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		D73E8919291AA4B900F29CE6 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D73E891A291AA4D800F29CE6 /* LoadingProgressView.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		D76502FE291266C90054237A /* Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +194,7 @@
 		D7C3C264290FFD1C00D842F4 /* FastSurvey */ = {
 			isa = PBXGroup;
 			children = (
+				D73E8919291AA4B900F29CE6 /* Modifiers */,
 				D73E89162917FE0000F29CE6 /* Info.plist */,
 				D73E89092917EADD00F29CE6 /* NetworkService */,
 				D73E88F42916DBF700F29CE6 /* UI */,
@@ -327,7 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */,
+				D73E8918291AA48900F29CE6 /* View+Loading.swift in Sources */,
 				D73E88F82916DC3F00F29CE6 /* IconSecureField.swift in Sources */,
+				D73E891B291AA4D800F29CE6 /* LoadingProgressView.swift in Sources */,
 				D73E88F62916DC1C00F29CE6 /* IconTextField.swift in Sources */,
 				D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */,
 				D73E88F32916DB8500F29CE6 /* Int+String.swift in Sources */,
