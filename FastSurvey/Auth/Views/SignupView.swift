@@ -68,14 +68,33 @@ struct SignupView: View {
                 
             }
             
+            Text(viewModel.errorMessage)
+            
             Button {
-                authType = .login
+                viewModel.makeSignup()
             } label: {
-                Text("Signup")
+                Text("Sign Up")
             }
-            .buttonStyle(.bordered)
+            .padding(.vertical)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(minHeight: 0, maxHeight: 60)
+            .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
-            .tint(.blue)
+            
+            Spacer()
+            
+            VStack {
+                Text("Already have an a account?")
+                    .font(.system(size: 12))
+                          
+                Button {
+                    authType = .login
+                } label: {
+                    Text("Sign in")
+                }
+                .tint(.blue)
+                .font(.system(size: 12, weight: .bold))
+            }.padding()
            
         }.padding()
     }

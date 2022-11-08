@@ -18,6 +18,11 @@
 		D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89012916DD1D00F29CE6 /* LoginView.swift */; };
 		D73E89062917038400F29CE6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89052917038400F29CE6 /* SignupViewModel.swift */; };
 		D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8907291710F100F29CE6 /* LoginViewModel.swift */; };
+		D73E890B2917EB4A00F29CE6 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890A2917EB4A00F29CE6 /* NetworkClient.swift */; };
+		D73E890D2917EB9500F29CE6 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890C2917EB9500F29CE6 /* NetworkConfiguration.swift */; };
+		D73E890F2917ED3400F29CE6 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890E2917ED3400F29CE6 /* JSONHelper.swift */; };
+		D73E89122917F65900F29CE6 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89112917F65900F29CE6 /* SignupRequest.swift */; };
+		D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89142917F87400F29CE6 /* SignupJSON.swift */; };
 		D7650300291266E60054237A /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* SurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */; };
@@ -46,6 +51,12 @@
 		D73E89012916DD1D00F29CE6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D73E89052917038400F29CE6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		D73E8907291710F100F29CE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D73E890A2917EB4A00F29CE6 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		D73E890C2917EB9500F29CE6 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		D73E890E2917ED3400F29CE6 /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		D73E89112917F65900F29CE6 /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		D73E89142917F87400F29CE6 /* SignupJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupJSON.swift; sourceTree = "<group>"; };
+		D73E89162917FE0000F29CE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D76502FF291266E60054237A /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D7C3C262290FFD1C00D842F4 /* FastSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +124,34 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D73E89092917EADD00F29CE6 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				D73E89132917F83000F29CE6 /* JSON */,
+				D73E89102917F62E00F29CE6 /* API */,
+				D73E890A2917EB4A00F29CE6 /* NetworkClient.swift */,
+				D73E890C2917EB9500F29CE6 /* NetworkConfiguration.swift */,
+				D73E890E2917ED3400F29CE6 /* JSONHelper.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		D73E89102917F62E00F29CE6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D73E89112917F65900F29CE6 /* SignupRequest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D73E89132917F83000F29CE6 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D73E89142917F87400F29CE6 /* SignupJSON.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		D76502FE291266C90054237A /* Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +181,8 @@
 		D7C3C264290FFD1C00D842F4 /* FastSurvey */ = {
 			isa = PBXGroup;
 			children = (
+				D73E89162917FE0000F29CE6 /* Info.plist */,
+				D73E89092917EADD00F29CE6 /* NetworkService */,
 				D73E88F42916DBF700F29CE6 /* UI */,
 				D73E88ED2916D9CF00F29CE6 /* Extensions */,
 				D76502FE291266C90054237A /* Survey */,
@@ -285,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */,
 				D73E88F82916DC3F00F29CE6 /* IconSecureField.swift in Sources */,
 				D73E88F62916DC1C00F29CE6 /* IconTextField.swift in Sources */,
 				D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */,
@@ -299,14 +341,18 @@
 				D73E88EC2916D8E900F29CE6 /* AuthScreenView.swift in Sources */,
 				D76503022912C1950054237A /* VoteButton.swift in Sources */,
 				D7650300291266E60054237A /* SurveyScreenView.swift in Sources */,
+				D73E890F2917ED3400F29CE6 /* JSONHelper.swift in Sources */,
 				D7C3C28629104E1400D842F4 /* Survey.swift in Sources */,
 				D7C3C28229104A7E00D842F4 /* SurveyFeedViewModel.swift in Sources */,
 				D7C3C27B2910024000D842F4 /* UserSurveysScreenView.swift in Sources */,
 				D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */,
 				D73E88FA2916DC5F00F29CE6 /* PickerButton.swift in Sources */,
 				D7C3C28029104A4800D842F4 /* SurveyListView.swift in Sources */,
+				D73E89122917F65900F29CE6 /* SignupRequest.swift in Sources */,
 				D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */,
+				D73E890B2917EB4A00F29CE6 /* NetworkClient.swift in Sources */,
 				D73E88EF2916D9EF00F29CE6 /* View+HalfSheet.swift in Sources */,
+				D73E890D2917EB9500F29CE6 /* NetworkConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +486,7 @@
 				DEVELOPMENT_TEAM = P3JC9RT8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastSurvey/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -469,6 +516,7 @@
 				DEVELOPMENT_TEAM = P3JC9RT8Q8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastSurvey/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

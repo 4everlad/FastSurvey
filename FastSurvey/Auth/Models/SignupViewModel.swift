@@ -22,8 +22,21 @@ final class SignupViewModel: ObservableObject {
     @Published var gender: String = "Female"
     @Published var country: String = "ru"
     
-    var allGenders: [String] = Gender.allCases.map { $0.rawValue }
-    var allAges: [Int] = Array<Int>(18...99)
-    var allCountries = ["ru", "en", "us"]
+    @Published private(set)var errorMessage: String = ""
+    
+    private(set)var allGenders: [String] = Gender.allCases.map { $0.rawValue }
+    private(set)var allAges: [Int] = Array<Int>(18...99)
+    private(set)var allCountries = ["ru", "en", "us"]
+    
+    func makeSignup() {
+        let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
+        
+        let params = SignupParams(password: password, data: userData)
+        SignupRequest(params: params).makeSignup(completion: { message in
+            DispatchQueue.main.async {
+                self.errorMessage = message
+            }
+        })
+    }
     
 }
