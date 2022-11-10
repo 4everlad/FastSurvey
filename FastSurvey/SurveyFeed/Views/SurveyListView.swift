@@ -16,16 +16,24 @@ struct SurveysListView: View, IItemView {
     
     var body: some View {
         List {
-            VStack {
-                ForEach(viewModel.surveys) { item in
-                    SurveyCellView(survey: item)
-                        .onTapGesture {
-                            listener?.push(view: SurveyScreenView(survey: item))
+            ForEach(viewModel.surveys) { item in
+                let isElementLast = viewModel.surveys.isLast(item)
+                SurveyCellView(survey: item)
+                    .onTapGesture {
+                        listener?.push(view: SurveyScreenView(survey: item))
+                    }
+                    .onAppear {
+                        if viewModel.canLoad && isElementLast {
+                            viewModel.getSurveys()
                         }
-                        .listRowSeparator(.hidden)
-                }
+                    }
+                    .progressBar(isLoading: isElementLast && viewModel.canLoad == false)
+                    .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)
+        .onAppear {
+            viewModel.getSurveys()
+        }
     }
 }

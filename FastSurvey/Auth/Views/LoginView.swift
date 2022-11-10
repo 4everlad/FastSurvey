@@ -10,25 +10,53 @@ import SwiftUI
 struct LoginView: View {
     
     @Binding var authType: AuthType
-    @StateObject var viewModel: SignupViewModel = .init()
+    @Binding var isAuthed: Bool
+    @StateObject var viewModel: LoginViewModel = .init()
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("Please login in to continue")
+            Text("Please log in to continue")
                 .font(.headline)
             IconTextField(text: $viewModel.email, iconName: "envelope.fill", placeholder: "Enter your email")
             IconSecureField(text: $viewModel.password, iconName: "key.fill", placeholder: "Enter your password")
             
-            Button {
-                authType = .signup
-            } label: {
-                Text("Signup")
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.capsule)
-            .tint(.blue)
+            Text(viewModel.errorMessage)
             
-        }.padding()
+            Button {
+                viewModel.makeLogin(completion: {
+                    self.isAuthed = true
+                })
+            } label: {
+                if !viewModel.isLoading {
+                    Text("Sign Up")
+                } else {
+                    ProgressView()
+                        .tint(.white)
+                        .scaleEffect(1.5, anchor: .center)
+                }
+            }
+            .padding(.vertical)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(minHeight: 0, maxHeight: 60)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            
+            Spacer()
+            
+            VStack {
+                Text("Already have an a account?")
+                    .font(.system(size: 12))
+                
+                Button {
+                    authType = .signup
+                } label: {
+                    Text("Sign up")
+                }
+                .tint(.blue)
+                .font(.system(size: 12, weight: .bold))
+                
+            }.padding()
+        }
         
     }
 }

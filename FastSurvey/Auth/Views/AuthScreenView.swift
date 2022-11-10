@@ -31,7 +31,13 @@ struct AuthScreenView: View, IItemView {
                     }
                 }
         case .login:
-            LoginView(authType: $authType)
+            LoginView(authType: $authType, isAuthed: $isAuthed)
+                .onChange(of: isAuthed) { newValue in
+                    if newValue == true {
+                        listener?.push(view: TabController(listener: listener))
+                        isAuthed = false
+                    }
+                }
         }
     }
 }

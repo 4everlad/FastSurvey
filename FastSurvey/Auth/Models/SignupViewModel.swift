@@ -14,6 +14,8 @@ enum Gender: String, CaseIterable {
 
 final class SignupViewModel: ObservableObject {
     
+    let accountManager = AccountManager.shared
+    
     @Published var username: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
@@ -38,8 +40,9 @@ final class SignupViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.isLoading = false
                 self.errorMessage = message
-                completion()
             }
+            self.accountManager.token = message
+            completion()
         })
     }
     

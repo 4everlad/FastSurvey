@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct Survey: Identifiable {
-    var id = UUID()
+struct Survey: Equatable, Identifiable {
+    
+    public var id = UUID()
+    
+    var sid: String
+    var ownerId: String
     var title: String
     var description: String
-    var upVotes: Int
-    var downVotes: Int
+    var upVotesCount: Int
+    var downVotesCount: Int
+    
+    
 }

@@ -6,15 +6,62 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SurveyFeedViewModel: ObservableObject {
-    @Published var surveys: [Survey] = [
-        Survey(title: "How does society sees you as a soldier?", description: "At one point, I was leaving Army basic to go back home. I had purchased a pack of darts (like for a dart board) during my time there, and had them in my luggage.", upVotes: 3, downVotes: 4),
-        Survey(title: "How does society sees you as a soldier?", description: "At one point, I was leaving Army basic to go back home. I had purchased a pack of darts (like for a dart board) during my time there, and had them in my luggage.", upVotes: 3, downVotes: 4),
-        Survey(title: "Is Putin admired and respected in Eastern European countries like Poland, Czechia, etc.??", description: "Dear author, once again, both mentioned countries are Central European.I know that Russian propaganda likes to claim a lot of nonsense. But Putin is a joke to most people here, and at the same time the vast majority of people consider him a criminal and kleptocratic crazy man.", upVotes: 3, downVotes: 100),
-        Survey(title: "What do Greeks think of Turks?", description: "Oh that's a good question. I'm coming from a quite progressive family. My father always told me “don't listen to the media” when it was about Turkey", upVotes: 50, downVotes: 50),
-        Survey(title: "What makes you think how technologically backward your country is?", description: "It is not even a new technology just installed. It is already an old technology that people had for many years. This was invented before 'smart phones' and other smart electronic devices. It is already a relic technology.", upVotes: 25, downVotes: 15)
+    @Published var surveys: [Survey] = []
+    
+    let accountManager = AccountManager.shared
+    
+    var canLoad = true
+    
+    var currentSurveysCount: Int = 0
+    
+    func getSurveys() {
         
-    ]
+        guard canLoad == true else { return }
+        guard currentSurveysCount == self.surveys.count else { return } 
+        
+        guard let token = accountManager.token else {
+            print("ffffff no token")
+            return
+        }
+        
+        canLoad = false
+        
+        var startAfterId: String?
+        if let survey = surveys.last {
+            startAfterId = survey.sid
+        }
+        
+        canLoad = false
+        
+        NetworkClient().getSurveyFeed(token: token, count: 10, startAfter: startAfterId, completion: { [weak self] (feed, error) in
+            if let surveys = feed {
+                let surveyFeed: [Survey] = surveys.compactMap {
+                    let survey = Survey(sid: $0.id,
+                                        ownerId: $0.ownerId,
+                                        title: $0.data.title,
+                                        description:  $0.data.desc,
+                                        upVotesCount: $0.upVotes.count,
+                                        downVotesCount: $0.downVotes.count)
+                    
+                    return survey
+                }
+                DispatchQueue.main.async {
+                    if !surveyFeed.isEmpty {
+                        self?.canLoad = true
+                        self?.surveys.append(contentsOf: surveyFeed)
+                        self?.currentSurveysCount += surveyFeed.count
+                    } else {
+                        self?.canLoad = false
+                    }
+                }
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+            
+        })
+    }
     
 }

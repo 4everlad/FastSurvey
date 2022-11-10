@@ -35,18 +35,37 @@ class NetworkClient {
     
     private var urlDataTask: URLSessionDataTask? = nil
     
-    func request<T:Codable>(path: String, method: Method = .get, params: [String:Any] = [:], completion: @escaping(Result<T,Error>)->Void) {
+    func request<T:Codable>(path: String, method: Method = .get, headers: [String:String] = [:], params: [String:Any] = [:], queryItems: [String: String] = [:], completion: @escaping(Result<T,Error>)->Void) {
         let baseUrl = config.getBaseUrl()
-        guard let url = URL(string: "\(baseUrl)\(path)") else {
+        
+        guard var urlComponents = URLComponents(string: "\(baseUrl)\(path)") else {
             return
         }
-        var urlRequest = URLRequest(url: url, timeoutInterval: .infinity)
+        
+        if !queryItems.isEmpty {
+            urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
+        }
+        
+        print(urlComponents.url ?? "wrong url")
+        
+        var urlRequest = URLRequest(url: urlComponents.url!)
         urlRequest.httpMethod = method.rawValue
         
-        let headers = config.getHeaders()
-        for h in headers {
-            urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+        if headers.isEmpty {
+            let defaultHeaders = config.getHeaders()
+            for h in defaultHeaders {
+                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+            }
+        } else {
+            let defaultHeaders = config.getHeaders()
+            for h in defaultHeaders {
+                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+            }
+            for h in headers {
+                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+            }
         }
+        
         
         if !params.isEmpty {
             guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
@@ -60,7 +79,7 @@ class NetworkClient {
 //            }
             
             if let data = data {
-                
+                let json = String(data: data, encoding: .utf8)
                 if let decoded = JsonHelper.shared.decode(type: T.self, data: data) {
                     completion(.success(decoded))
                 }

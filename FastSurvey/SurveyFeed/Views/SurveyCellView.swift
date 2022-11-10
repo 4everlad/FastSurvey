@@ -12,20 +12,25 @@ struct SurveyCellView: View {
     
     let survey: Survey
     
+    @State var isViewDisplayed = false
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(survey.title)
                     .font(.headline)
+                    .onAppear {
+                        print("ffffff \(survey.sid) -- is Displayed")
+                    }
                 Spacer()
                 
                 Text(survey.description)
                     .font(.subheadline)
                 Spacer()
                 
-                Text("Upvoted: \(survey.upVotes)")
+                Text("Upvoted: \(survey.upVotesCount)")
                     .font(.system(size: 12, design: .rounded))
-                Text("Downvoted: \(survey.downVotes)")
+                Text("Downvoted: \(survey.downVotesCount)")
                     .font(.system(size: 12, design: .rounded))
             }
             
