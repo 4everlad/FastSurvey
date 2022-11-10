@@ -7,18 +7,6 @@
 
 import Foundation
 
-//enum APIErrors: Error {
-//    typealias RawValue = Int
-//
-//    case noInternet
-//    case notAuthed
-//    case badResponse(Error?)
-//    case notAllowed
-//    case errorBody([String: Any])
-//    case badRequest
-//    case noAccount
-//}
-
 enum Method: String {
     case get = "GET"
     case post = "POST"
