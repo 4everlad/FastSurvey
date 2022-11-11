@@ -28,9 +28,9 @@ struct SurveyCellView: View {
                     .font(.subheadline)
                 Spacer()
                 
-                Text("Upvoted: \(survey.upVotesCount)")
+                Text("Upvoted: \(survey.upVotes.count)")
                     .font(.system(size: 12, design: .rounded))
-                Text("Downvoted: \(survey.downVotesCount)")
+                Text("Downvoted: \(survey.downVotes.count)")
                     .font(.system(size: 12, design: .rounded))
             }
             

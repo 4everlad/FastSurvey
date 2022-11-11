@@ -27,8 +27,6 @@ class SurveyFeedViewModel: ObservableObject {
             return
         }
         
-        canLoad = false
-        
         var startAfterId: String?
         if let survey = surveys.last {
             startAfterId = survey.sid
@@ -39,13 +37,7 @@ class SurveyFeedViewModel: ObservableObject {
         NetworkClient().getSurveyFeed(token: token, count: 10, startAfter: startAfterId, completion: { [weak self] (feed, error) in
             if let surveys = feed {
                 let surveyFeed: [Survey] = surveys.compactMap {
-                    let survey = Survey(sid: $0.id,
-                                        ownerId: $0.ownerId,
-                                        title: $0.data.title,
-                                        description:  $0.data.desc,
-                                        upVotesCount: $0.upVotes.count,
-                                        downVotesCount: $0.downVotes.count)
-                    
+                    let survey = Survey(with: $0)
                     return survey
                 }
                 DispatchQueue.main.async {

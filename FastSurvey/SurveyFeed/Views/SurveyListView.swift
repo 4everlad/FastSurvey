@@ -20,7 +20,7 @@ struct SurveysListView: View, IItemView {
                 let isElementLast = viewModel.surveys.isLast(item)
                 SurveyCellView(survey: item)
                     .onTapGesture {
-                        listener?.push(view: SurveyScreenView(survey: item))
+                        listener?.push(view: SurveyScreenView(surveyID: item.sid))
                     }
                     .onAppear {
                         if viewModel.canLoad && isElementLast {

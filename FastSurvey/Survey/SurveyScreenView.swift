@@ -12,21 +12,26 @@ import SwiftUINavigator
 struct SurveyScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    @State var survey: Survey
-    @State var isUp = false
-    @State var isDown = false
+    var surveyID: String
+    
+    @StateObject var viewModel: SurveyViewModel = .init()
     
 //    @State var widthButton: CGFloat = 100
 //    @State var heightButton: CGFloat = 50
     
     var body: some View {
         NavigationView {
+//            if let viewModel.survey = Survey
             VStack(alignment: .leading, spacing: 32) {
-                Text(survey.title)
-                    .font(.title)
-                Text(survey.description)
-                VoteView( survey: $survey, isUp: $isUp, isDown: $isDown)
-                Spacer()
+                if viewModel.survey != nil {
+                    Text(viewModel.survey!.title)
+                        .font(.title)
+                    Text(viewModel.survey!.description)
+                    VoteView(survey: $viewModel.survey.optionalBinding(defaultValue: Survey()), isUp: $viewModel.isUp, isDown: $viewModel.isDown)
+                    Spacer()
+                } else {
+                    Text("Is Loading...")
+                }
             }
             .navigationBarItems(leading:
                 Button(action: {
@@ -38,6 +43,9 @@ struct SurveyScreenView: View, IItemView {
             .navigationBarTitle(Text("Survey"))
             .navigationBarTitleDisplayMode(.inline)
             .padding()
+        }
+        .onAppear {
+            viewModel.getSurvey(by: surveyID)
         }
     }
 }

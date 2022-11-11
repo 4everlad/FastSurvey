@@ -9,6 +9,7 @@ import Foundation
 
 protocol SurveyNetworkService {
     func getSurveyFeed(token: String, count: Int, startAfter: String?, completion: @escaping([SurveyJSON]?, Error?)->Void)
+    func getSurvey(token: String, id: String, completion: @escaping(SurveyJSON?, Error?)->Void)
 }
 
 extension NetworkClient: SurveyNetworkService {
@@ -27,6 +28,22 @@ extension NetworkClient: SurveyNetworkService {
         }
         
         self.request(path: endpoint, method: .get, headers: headersDic, queryItems: queryItems) { (result: Result<[SurveyJSON],Error>) in
+            switch result {
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getSurvey(token: String, id: String, completion: @escaping(SurveyJSON?, Error?)->Void) {
+        
+        let endpoint = "survey/\(id)"
+        var headersDic: [String:String] = [:]
+        headersDic["Authorization"] = "Bearer \(token)"
+        
+        self.request(path: endpoint, method: .get, headers: headersDic) { (result: Result<SurveyJSON,Error>) in
             switch result {
             case .success(let data):
                 completion(data, nil)

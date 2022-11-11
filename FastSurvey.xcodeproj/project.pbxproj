@@ -31,6 +31,8 @@
 		D73E8928291BFEAF00F29CE6 /* LoginParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8927291BFEAF00F29CE6 /* LoginParams.swift */; };
 		D73E892A291BFF9B00F29CE6 /* AuthNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8929291BFF9B00F29CE6 /* AuthNetworkService.swift */; };
 		D73E892C291CFB9B00F29CE6 /* Collections+Indexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E892B291CFB9A00F29CE6 /* Collections+Indexes.swift */; };
+		D73E892E291E2F6500F29CE6 /* SurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E892D291E2F6500F29CE6 /* SurveyViewModel.swift */; };
+		D73E8932291E565700F29CE6 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8931291E565700F29CE6 /* Binding+Extension.swift */; };
 		D7650300291266E60054237A /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* SurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */; };
@@ -73,6 +75,8 @@
 		D73E8927291BFEAF00F29CE6 /* LoginParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParams.swift; sourceTree = "<group>"; };
 		D73E8929291BFF9B00F29CE6 /* AuthNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkService.swift; sourceTree = "<group>"; };
 		D73E892B291CFB9A00F29CE6 /* Collections+Indexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collections+Indexes.swift"; sourceTree = "<group>"; };
+		D73E892D291E2F6500F29CE6 /* SurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewModel.swift; sourceTree = "<group>"; };
+		D73E8931291E565700F29CE6 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		D76502FF291266E60054237A /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D7C3C262290FFD1C00D842F4 /* FastSurvey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastSurvey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,7 @@
 				D73E88F22916DB8500F29CE6 /* Int+String.swift */,
 				D73E8917291AA48900F29CE6 /* View+Loading.swift */,
 				D73E892B291CFB9A00F29CE6 /* Collections+Indexes.swift */,
+				D73E8931291E565700F29CE6 /* Binding+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,12 +195,38 @@
 			path = UserAccount;
 			sourceTree = "<group>";
 		};
+		D73E892F291E4EB000F29CE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7F95EFA2912F81B00645875 /* VoteView.swift */,
+				D76503012912C1950054237A /* VoteButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D73E8930291E4EC500F29CE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D73E892D291E2F6500F29CE6 /* SurveyViewModel.swift */,
+				D7C3C28529104E1400D842F4 /* Survey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D73E8933291E5CF400F29CE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D76502FE291266C90054237A /* Survey */ = {
 			isa = PBXGroup;
 			children = (
+				D73E8930291E4EC500F29CE6 /* Models */,
+				D73E892F291E4EB000F29CE6 /* Views */,
 				D76502FF291266E60054237A /* SurveyScreenView.swift */,
-				D76503012912C1950054237A /* VoteButton.swift */,
-				D7F95EFA2912F81B00645875 /* VoteView.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -226,7 +257,6 @@
 				D73E88F42916DBF700F29CE6 /* UI */,
 				D73E88ED2916D9CF00F29CE6 /* Extensions */,
 				D76502FE291266C90054237A /* Survey */,
-				D7C3C28429104D8000D842F4 /* Models */,
 				D7C3C277291001C600D842F4 /* UserSurveys */,
 				D7C3C276291001A700D842F4 /* SurveyFeed */,
 				D7C3C2752910017E00D842F4 /* Auth */,
@@ -258,6 +288,8 @@
 		D7C3C276291001A700D842F4 /* SurveyFeed */ = {
 			isa = PBXGroup;
 			children = (
+				D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */,
+				D73E8933291E5CF400F29CE6 /* Models */,
 				D7C3C28329104D1600D842F4 /* Views */,
 			);
 			path = SurveyFeed;
@@ -274,20 +306,10 @@
 		D7C3C28329104D1600D842F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7C3C278291001F100D842F4 /* SurveyFeedScreenView.swift */,
 				D7C3C27F29104A4800D842F4 /* SurveyListView.swift */,
 				D7C3C287291131E300D842F4 /* SurveyCellView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		D7C3C28429104D8000D842F4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */,
-				D7C3C28529104E1400D842F4 /* Survey.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +406,7 @@
 				D73E88FC2916DC7D00F29CE6 /* BottomPickerView.swift in Sources */,
 				D7F95EFB2912F81B00645875 /* VoteView.swift in Sources */,
 				D7C3C279291001F100D842F4 /* SurveyFeedScreenView.swift in Sources */,
+				D73E892E291E2F6500F29CE6 /* SurveyViewModel.swift in Sources */,
 				D73E88EC2916D8E900F29CE6 /* AuthScreenView.swift in Sources */,
 				D76503022912C1950054237A /* VoteButton.swift in Sources */,
 				D7650300291266E60054237A /* SurveyScreenView.swift in Sources */,
@@ -396,6 +419,7 @@
 				D73E88FA2916DC5F00F29CE6 /* PickerButton.swift in Sources */,
 				D7C3C28029104A4800D842F4 /* SurveyListView.swift in Sources */,
 				D73E89122917F65900F29CE6 /* SignupRequest.swift in Sources */,
+				D73E8932291E565700F29CE6 /* Binding+Extension.swift in Sources */,
 				D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */,
 				D73E8920291ACAF100F29CE6 /* AccountManager.swift in Sources */,
 				D73E890B2917EB4A00F29CE6 /* NetworkClient.swift in Sources */,
