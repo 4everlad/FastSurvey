@@ -9,12 +9,31 @@ import Foundation
 
 protocol AuthNetworkService {
     func makeLogin(params: LoginParams, completion: @escaping (String) -> ())
+    func makeSignup(params: SignupParams, completion: @escaping (String) -> ())
 }
 
 extension NetworkClient: AuthNetworkService {
     func makeLogin(params: LoginParams, completion: @escaping (String) -> ()) {
         
         let endpoint = "signin"
+        
+        guard let encodedParams = JsonHelper.shared.encode(value: params) else {
+            return
+        }
+        
+        self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<SignupRequestJSON,Error>) in
+            switch result {
+            case .success(let data):
+                completion(data.token)
+            case .failure(let error):
+                completion(error.localizedDescription)
+            }
+        }
+    }
+    
+    func makeSignup(params: SignupParams, completion: @escaping (String) -> ()) {
+        
+        let endpoint: String = "signup"
         
         guard let encodedParams = JsonHelper.shared.encode(value: params) else {
             return

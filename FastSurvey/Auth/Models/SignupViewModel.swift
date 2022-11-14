@@ -34,9 +34,9 @@ final class SignupViewModel: ObservableObject {
         
         isLoading = true
         let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
-        
         let params = SignupParams(password: password, data: userData)
-        SignupRequest(params: params).makeSignup(completion: { message in
+        
+        NetworkClient().makeSignup(params: params, completion: { message in
             DispatchQueue.main.async {
                 self.isLoading = false
                 self.errorMessage = message

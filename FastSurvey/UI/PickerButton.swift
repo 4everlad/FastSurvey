@@ -22,9 +22,9 @@ struct PickerButton: View {
                         .bold()
                         .font(.system(size: 13, design: .rounded))
                     
-                        Image(systemName: "chevron.down")
-                            .font(.system(size: 10, weight: .bold))
-                        
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 10, weight: .bold))
+                    
                 }
                 
                 Text(text)

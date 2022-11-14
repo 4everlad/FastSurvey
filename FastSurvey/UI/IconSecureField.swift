@@ -16,9 +16,9 @@ struct IconSecureField: View {
     
     var body: some View {
         HStack {
-            Image(systemName: iconName).foregroundColor(.blue)
             SecureField(placeholder, text: $text)
                 .textFieldStyle(.plain)
+            Image(systemName: iconName).foregroundColor(.blue)
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))

@@ -30,8 +30,10 @@ struct SurveyCellView: View {
                 
                 Text("Upvoted: \(survey.upVotes.count)")
                     .font(.system(size: 12, design: .rounded))
+                    .foregroundColor(.green)
                 Text("Downvoted: \(survey.downVotes.count)")
                     .font(.system(size: 12, design: .rounded))
+                    .foregroundColor(.red)
             }
             
             Spacer()

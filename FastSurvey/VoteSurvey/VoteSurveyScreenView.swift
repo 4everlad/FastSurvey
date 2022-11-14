@@ -1,5 +1,5 @@
 //
-//  SurveyScreenView.swift
+//  VoteSurveyScreenView.swift
 //  FastSurvey
 //
 //  Created by Dmitry Bakulin on 02.11.2022.
@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 import SwiftUINavigator
 
-struct SurveyScreenView: View, IItemView {
+struct VoteSurveyScreenView: View, IItemView {
     
     var listener: INavigationContainer?
     
-    @ObservedObject var viewModel: SurveyViewModel
+    @ObservedObject var viewModel: VoteSurveyViewModel
     
     init(surveyID: String) {
-        self.viewModel = SurveyViewModel(surveyID: surveyID)
+        self.viewModel = VoteSurveyViewModel(surveyID: surveyID)
     }
     
     var body: some View {

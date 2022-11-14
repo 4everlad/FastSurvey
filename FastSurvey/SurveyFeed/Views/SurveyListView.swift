@@ -21,7 +21,7 @@ struct SurveysListView: View, IItemView {
                 SurveyCellView(survey: item)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        listener?.push(view: SurveyScreenView(surveyID: item.sid))
+                        listener?.push(view: VoteSurveyScreenView(surveyID: item.sid))
                     }
                     .onAppear {
                         if viewModel.canLoad && isElementLast {

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct VoteView: View {
     
-    @ObservedObject var viewModel: SurveyViewModel
+    @ObservedObject var viewModel: VoteSurveyViewModel
     
     var body: some View {
         HStack(spacing: 64) {

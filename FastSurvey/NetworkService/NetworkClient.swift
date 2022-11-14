@@ -13,10 +13,11 @@ enum Method: String {
 }
 
 class NetworkClient {
-    private let config = NetworkConfiguration()
+    let config = NetworkConfiguration()
     
     private lazy var urlSession: URLSession? = {
         let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 15
         let session = URLSession(configuration: configuration)
         return session
     }()
@@ -30,30 +31,20 @@ class NetworkClient {
             return
         }
         
-        if !queryItems.isEmpty {
+        let queryItemss = config.getQueryItems()
+        
+        if !queryItemss.isEmpty {
             urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
         }
-        
-        print(urlComponents.url ?? "wrong url")
         
         var urlRequest = URLRequest(url: urlComponents.url!)
         urlRequest.httpMethod = method.rawValue
         
-        if headers.isEmpty {
-            let defaultHeaders = config.getHeaders()
-            for h in defaultHeaders {
-                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
-            }
-        } else {
-            let defaultHeaders = config.getHeaders()
-            for h in defaultHeaders {
-                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
-            }
-            for h in headers {
-                urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
-            }
-        }
+        let headers = config.getHeaders()
         
+        for h in headers {
+            urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+        }
         
         if !params.isEmpty {
             guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }

@@ -23,7 +23,6 @@ class SurveyFeedViewModel: ObservableObject {
         guard currentSurveysCount == self.surveys.count else { return } 
         
         guard let token = accountManager.token else {
-            print("ffffff no token")
             return
         }
         

@@ -16,9 +16,11 @@ struct IconTextField: View {
     
     var body: some View {
         HStack {
-            Image(systemName: iconName).foregroundColor(.blue)
             TextField(placeholder, text: $text)
                 .textFieldStyle(.plain)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+            Image(systemName: iconName).foregroundColor(.blue)
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))

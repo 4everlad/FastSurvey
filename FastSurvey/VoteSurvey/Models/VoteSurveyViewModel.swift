@@ -1,5 +1,5 @@
 //
-//  SurveyViewModel.swift
+//  VoteSurveyViewModel.swift
 //  FastSurvey
 //
 //  Created by Dmitry Bakulin on 11.11.2022.
@@ -21,7 +21,7 @@ struct StateButton {
     var downCounter = 0
 }
 
-class SurveyViewModel: ObservableObject {
+class VoteSurveyViewModel: ObservableObject {
     
     let accountManager = AccountManager.shared
     @Published var survey: Survey = Survey() {
@@ -57,7 +57,6 @@ class SurveyViewModel: ObservableObject {
     func getSurvey(by id: String) {
         
         guard let token = accountManager.token else {
-            print("ffffff no token")
             return
         }
         
