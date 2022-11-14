@@ -65,7 +65,7 @@ extension NetworkClient: SurveyNetworkService {
             return
         }
         
-        self.request(path: path, method: .post, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in
+        self.request(path: path, method: .post, headers: headersDic, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in
             switch result {
             case .success(let data):
                 completion(data, nil)
