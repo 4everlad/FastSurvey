@@ -16,7 +16,7 @@ struct PickerButton: View {
     
     var body: some View {
         Button(action: clicked) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(placeholder)
                         .bold()
