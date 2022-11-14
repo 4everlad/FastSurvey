@@ -24,7 +24,12 @@ struct StateButton {
 class SurveyViewModel: ObservableObject {
     
     let accountManager = AccountManager.shared
-    @Published var survey: Survey = Survey()
+    @Published var survey: Survey = Survey() {
+        didSet {
+            setVoteType()
+            setVoteCounters()
+        }
+    }
     
     @Published var voteType: VoteType = .none {
         didSet {
@@ -63,8 +68,6 @@ class SurveyViewModel: ObservableObject {
             if let json = survey {
                 DispatchQueue.main.async {
                     self?.survey = Survey(with: json)
-                    self?.setVoteType()
-                    self?.setVoteCounters()
                     self?.isLoading = false
                 }
             } else if let error = error {
@@ -84,13 +87,14 @@ class SurveyViewModel: ObservableObject {
         
         let params = VoteParams(surveyId: survey.id, vote: vote.rawValue)
         
+        isLoading = true
+        
         NetworkClient().makeVote(token: token, params: params, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 DispatchQueue.main.async {
                     self?.survey = Survey(with: json)
-                    self?.setVoteType()
-                    self?.setVoteCounters()
+                    self?.isLoading = false
                 }
             } else if let error = error {
                 print(error.localizedDescription)
@@ -111,6 +115,7 @@ class SurveyViewModel: ObservableObject {
     
     func setVoteCounters() {
         self.stateButton.upCounter = survey.upVotes.count
+        print("setVoteCounters: \(self.stateButton.upCounter)")
         self.stateButton.downCounter = survey.downVotes.count
     }
 }

@@ -23,18 +23,18 @@ struct SurveyScreenView: View, IItemView {
         NavigationView {
             LoadingView(isShowing: $viewModel.isLoading) {
                 VStack(alignment: .leading, spacing: 32) {
-                        Text(viewModel.survey.title)
-                            .font(.title)
-                        Text(viewModel.survey.description)
-                        VoteView(viewModel: viewModel)
-                        Spacer()
+                    Text(viewModel.survey.title)
+                        .font(.title)
+                    Text(viewModel.survey.description)
+                    VoteView(viewModel: viewModel)
+                    Spacer()
                 }
                 .navigationBarItems(leading:
-                    Button(action: {
-                        listener?.pop()
-                    }, label: {
-                        Text("Feed")
-                    })
+                                        Button(action: {
+                    listener?.pop()
+                }, label: {
+                    Text("Feed")
+                })
                 )
                 .navigationBarTitle(Text("Survey"))
                 .navigationBarTitleDisplayMode(.inline)
