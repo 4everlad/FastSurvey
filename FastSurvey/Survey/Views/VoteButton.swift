@@ -10,8 +10,8 @@ import SwiftUI
 
 struct VoteButton: View {
     
-    @Binding var isVoted: Bool
-    var counter: Int = 0
+    var isVoted: Bool
+    var counter: Int
     var text: String = ""
     var clicked: (() -> Void)
 

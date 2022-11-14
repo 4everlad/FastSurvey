@@ -10,32 +10,24 @@ import SwiftUI
 
 struct VoteView: View {
     
-    @Binding var survey: Survey
-    @Binding var isUp: Bool
-    @Binding var isDown: Bool
+    var viewModel: SurveyViewModel
     
     var body: some View {
         HStack(spacing: 64) {
             VoteButton (
-                isVoted: $isUp,
-                counter: survey.upVotes.count,
+                isVoted: viewModel.stateButton.isUp,
+                counter: viewModel.stateButton.upCounter,
                 text: "YES"
             ) {
-                self.isUp.toggle()
-                if isUp == isDown {
-                    self.isDown.toggle()
-                }
+                viewModel.makeVote(vote: .up)
             }
             
             VoteButton (
-                isVoted: $isDown,
-                counter: survey.downVotes.count,
+                isVoted: viewModel.stateButton.isDown,
+                counter: viewModel.stateButton.downCounter,
                 text: "NO"
             ) {
-                self.isDown.toggle()
-                if isUp == isDown {
-                    self.isUp.toggle()
-                }
+                viewModel.makeVote(vote: .up)
             }
         }
     }

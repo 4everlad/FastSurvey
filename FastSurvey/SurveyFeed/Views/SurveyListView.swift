@@ -27,7 +27,7 @@ struct SurveysListView: View, IItemView {
                             viewModel.getSurveys()
                         }
                     }
-                    .progressBar(isLoading: isElementLast && viewModel.canLoad == false)
+                    .progressBar(isLoading: isElementLast && !viewModel.canLoad)
                     .listRowSeparator(.hidden)
             }
         }

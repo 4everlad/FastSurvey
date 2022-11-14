@@ -13,8 +13,8 @@ struct Survey: Equatable, Identifiable {
     
     var sid: String = "-1"
     var ownerId: String = "-1"
-    var title: String = "-1"
-    var description: String = "-1"
+    var title: String = ""
+    var description: String = ""
     var upVotes: [String] = [String]()
     var downVotes: [String] = [String]()
     

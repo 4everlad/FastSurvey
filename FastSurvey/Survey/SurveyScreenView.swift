@@ -12,40 +12,34 @@ import SwiftUINavigator
 struct SurveyScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    var surveyID: String
     
-    @StateObject var viewModel: SurveyViewModel = .init()
+    @ObservedObject var viewModel: SurveyViewModel
     
-//    @State var widthButton: CGFloat = 100
-//    @State var heightButton: CGFloat = 50
+    init(surveyID: String) {
+        self.viewModel = SurveyViewModel(surveyID: surveyID)
+    }
     
     var body: some View {
         NavigationView {
-//            if let viewModel.survey = Survey
-            VStack(alignment: .leading, spacing: 32) {
-                if viewModel.survey != nil {
-                    Text(viewModel.survey!.title)
-                        .font(.title)
-                    Text(viewModel.survey!.description)
-                    VoteView(survey: $viewModel.survey.optionalBinding(defaultValue: Survey()), isUp: $viewModel.isUp, isDown: $viewModel.isDown)
-                    Spacer()
-                } else {
-                    Text("Is Loading...")
+            LoadingView(isShowing: $viewModel.isLoading) {
+                VStack(alignment: .leading, spacing: 32) {
+                        Text(viewModel.survey.title)
+                            .font(.title)
+                        Text(viewModel.survey.description)
+                        VoteView(viewModel: viewModel)
+                        Spacer()
                 }
+                .navigationBarItems(leading:
+                    Button(action: {
+                        listener?.pop()
+                    }, label: {
+                        Text("Feed")
+                    })
+                )
+                .navigationBarTitle(Text("Survey"))
+                .navigationBarTitleDisplayMode(.inline)
+                .padding()
             }
-            .navigationBarItems(leading:
-                Button(action: {
-                    listener?.pop()
-                }, label: {
-                    Text("Feed")
-                })
-            )
-            .navigationBarTitle(Text("Survey"))
-            .navigationBarTitleDisplayMode(.inline)
-            .padding()
-        }
-        .onAppear {
-            viewModel.getSurvey(by: surveyID)
         }
     }
 }
