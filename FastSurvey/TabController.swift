@@ -28,7 +28,13 @@ struct TabController: View, IItemView {
                 .tabItem {
                     Label("My Surveys", systemImage: "tray.full.fill")
                 }
+            
+            UserAccountScreenView(listener: listener)
+                .tag(2)
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle.fill")
+                }
+            
         }
-        
     }
 }

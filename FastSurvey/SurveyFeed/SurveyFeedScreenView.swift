@@ -12,12 +12,13 @@ struct SurveyFeedScreenView: View, IItemView {
     var listener: INavigationContainer?
     
     var body: some View {
-        VStack {
-            
-            SurveysListView(listener: listener)
-    
+        NavigationView {
+            VStack {
+                SurveysListView(listener: listener)
+            }
+            .navigationTitle(Text("Survey Feed"))
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle(Text("Survey Feed"))
     }
 }
 
