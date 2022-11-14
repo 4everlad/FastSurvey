@@ -24,16 +24,16 @@ class NetworkClient {
     
     private var urlDataTask: URLSessionDataTask? = nil
     
-    func request<T:Codable>(path: String, method: Method = .get, headers: [String:String] = [:], params: [String:Any] = [:], queryItems: [String: String] = [:], completion: @escaping(Result<T,Error>)->Void) {
+    func request<T:Codable>(path: String, method: Method = .get, params: [String:Any] = [:], completion: @escaping(Result<T,Error>)->Void) {
         let baseUrl = config.getBaseUrl()
         
         guard var urlComponents = URLComponents(string: "\(baseUrl)\(path)") else {
             return
         }
         
-        let queryItemss = config.getQueryItems()
+        let queryItems = config.getQueryItems()
         
-        if !queryItemss.isEmpty {
+        if !queryItems.isEmpty {
             urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
         }
         
@@ -53,19 +53,14 @@ class NetworkClient {
         
         self.urlDataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { data, response, error in
             
-//            if let error = error {
-//                completion(.failure(error)
-//            }
-            
             if let data = data {
-                let json = String(data: data, encoding: .utf8)
                 if let decoded = JsonHelper.shared.decode(type: T.self, data: data) {
                     completion(.success(decoded))
+                } else {
+                    if let json = String(data: data, encoding: .utf8) {
+                        completion(.failure(CustomError(message: json)))
+                    } else { completion(.failure(CustomError(message: "Empty"))) }
                 }
-//                else {
-//                    let json = String(data: data, encoding: .utf8)
-//                }
-                
             }
         })
         self.urlDataTask?.resume()
