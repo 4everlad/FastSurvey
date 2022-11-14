@@ -8,12 +8,12 @@
 import Foundation
 
 protocol AuthNetworkService {
-    func makeLogin(params: LoginParams, completion: @escaping (String) -> ())
-    func makeSignup(params: SignupParams, completion: @escaping (String) -> ())
+    func makeLogin(params: LoginParams, completion: @escaping (Bool, String) -> ())
+    func makeSignup(params: SignupParams, completion: @escaping (Bool, String) -> ())
 }
 
 extension NetworkClient: AuthNetworkService {
-    func makeLogin(params: LoginParams, completion: @escaping (String) -> ()) {
+    func makeLogin(params: LoginParams, completion: @escaping (Bool, String) -> ()) {
         
         let endpoint = "signin"
         
@@ -24,14 +24,16 @@ extension NetworkClient: AuthNetworkService {
         self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<SignupRequestJSON,Error>) in
             switch result {
             case .success(let data):
-                completion(data.token)
-            case .failure(let error):
-                completion(error.localizedDescription)
+                completion(true, data.token)
+            case .failure(let error as CustomError):
+                completion(false, error.message)
+            case .failure(_):
+                completion(false, "")
             }
         }
     }
     
-    func makeSignup(params: SignupParams, completion: @escaping (String) -> ()) {
+    func makeSignup(params: SignupParams, completion: @escaping (Bool, String) -> ()) {
         
         let endpoint: String = "signup"
         
@@ -42,9 +44,11 @@ extension NetworkClient: AuthNetworkService {
         self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<SignupRequestJSON,Error>) in
             switch result {
             case .success(let data):
-                completion(data.token)
-            case .failure(let error):
-                completion(error.localizedDescription)
+                completion(true, data.token)
+            case .failure(let error as CustomError):
+                completion(false, error.message)
+            case .failure(_):
+                completion(false, "")
             }
         }
     }

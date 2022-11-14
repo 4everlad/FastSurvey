@@ -16,9 +16,24 @@ final class SignupViewModel: ObservableObject {
     
     let accountManager = AccountManager.shared
     
-    @Published var username: String = ""
-    @Published var email: String = ""
-    @Published var password: String = ""
+    @Published var username: String = "" {
+        didSet {
+            errorMessage = ""
+        }
+    }
+    
+    @Published var email: String = "" {
+        didSet {
+            errorMessage = ""
+        }
+    }
+    
+    @Published var password: String = "" {
+        didSet {
+            errorMessage = ""
+        }
+    }
+    
     @Published var age: Int = 18
     @Published var gender: String = "Female"
     @Published var country: String = "ru"
@@ -30,19 +45,25 @@ final class SignupViewModel: ObservableObject {
     private(set)var allAges: [Int] = Array<Int>(18...99)
     private(set)var allCountries = ["ru", "en", "us"]
     
-    func makeSignup(completion: @escaping ()->(Void)) {
+    func makeSignup(completion: @escaping (Bool)->(Void)) {
         
         isLoading = true
         let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
         let params = SignupParams(password: password, data: userData)
         
-        NetworkClient().makeSignup(params: params, completion: { message in
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = message
+        NetworkClient().makeSignup(params: params, completion: { result, message  in
+            
+            if result == true {
+                self.accountManager.token = message
+                completion(true)
+            } else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = message
+                }
+                completion(false)
             }
-            self.accountManager.token = message
-            completion()
+            
         })
     }
     

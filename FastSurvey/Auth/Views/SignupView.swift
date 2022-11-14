@@ -72,13 +72,18 @@ struct SignupView: View {
                 }
                 
                 Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
                 
                 Button {
-                    viewModel.makeSignup(completion: {
-                        self.isAuthed = true
+                    viewModel.makeSignup(completion: { result in
+                        if result == true {
+                            self.isAuthed = true
+                        } else {
+                            self.isAuthed = false
+                        }
                     })
                 } label: {
-                    Text("Sign In")
+                    Text("Sign Up")
                 }
                 .padding(.vertical)
                 .frame(minWidth: 0, maxWidth: .infinity)

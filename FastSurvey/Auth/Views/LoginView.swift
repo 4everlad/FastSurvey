@@ -19,13 +19,19 @@ struct LoginView: View {
                 Text("Please log in to continue")
                     .font(.headline)
                 IconTextField(text: $viewModel.email, iconName: "envelope.fill", placeholder: "Enter your email")
+                
                 IconSecureField(text: $viewModel.password, iconName: "key.fill", placeholder: "Enter your password")
                 
                 Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
                 
                 Button {
-                    viewModel.makeLogin(completion: {
-                        self.isAuthed = true
+                    viewModel.makeLogin(completion: { result in
+                        if result == true {
+                            self.isAuthed = true
+                        } else {
+                            self.isAuthed = false
+                        }
                     })
                 } label: {
                     if !viewModel.isLoading {
