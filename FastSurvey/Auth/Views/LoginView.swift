@@ -24,6 +24,7 @@ struct LoginView: View {
                 
                 Text(viewModel.errorMessage)
                     .foregroundColor(.red)
+                    .padding()
                 
                 Button {
                     viewModel.makeLogin(completion: { result in
@@ -34,24 +35,20 @@ struct LoginView: View {
                         }
                     })
                 } label: {
-                    if !viewModel.isLoading {
-                        Text("Sign Up")
-                    } else {
-                        ProgressView()
-                            .tint(.white)
-                            .scaleEffect(1.5, anchor: .center)
-                    }
+                    Text("Sign In")
+                        .font(.title2)
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 60, maxHeight: 60)
                 }
                 .padding(.vertical)
                 .frame(minWidth: 0, maxWidth: .infinity)
-                .frame(minHeight: 0, maxHeight: 60)
+                .frame(minHeight: 50, maxHeight: 50)
                 .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.capsule)
                 
                 Spacer()
                 
                 VStack {
-                    Text("Already have an a account?")
+                    Text("Don't have an account?")
                         .font(.system(size: 12))
                     
                     Button {

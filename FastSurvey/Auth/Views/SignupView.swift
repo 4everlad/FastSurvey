@@ -73,6 +73,7 @@ struct SignupView: View {
                 
                 Text(viewModel.errorMessage)
                     .foregroundColor(.red)
+                    .padding()
                 
                 Button {
                     viewModel.makeSignup(completion: { result in
@@ -84,12 +85,14 @@ struct SignupView: View {
                     })
                 } label: {
                     Text("Sign Up")
+                        .font(.title2)
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 50, maxHeight: 50)
                 }
                 .padding(.vertical)
                 .frame(minWidth: 0, maxWidth: .infinity)
-                .frame(minHeight: 0, maxHeight: 60)
+                .frame(minHeight: 50, maxHeight: 50)
                 .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.capsule)
                 
                 Spacer()
                 

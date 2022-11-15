@@ -44,6 +44,7 @@ struct BottomPickerView: View {
             .buttonStyle(.bordered)
             .buttonBorderShape(.capsule)
             .tint(.blue)
+            .font(.title2)
         }
     }
 }
