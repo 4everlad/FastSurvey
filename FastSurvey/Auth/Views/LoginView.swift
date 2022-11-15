@@ -38,7 +38,7 @@ struct LoginView: View {
                     Text("Sign In")
                         .font(.title2)
                         .frame(maxWidth: .infinity)
-                        .frame(minHeight: 60, maxHeight: 60)
+                        .frame(minHeight: 50, maxHeight: 50)
                 }
                 .padding(.vertical)
                 .frame(minWidth: 0, maxWidth: .infinity)
