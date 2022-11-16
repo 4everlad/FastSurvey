@@ -40,9 +40,4 @@ struct UserSurveysListView: View, IItemView {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        for index in offsets {
-            viewModel.removeSurvey(at: index)
-        }
-    }
 }
