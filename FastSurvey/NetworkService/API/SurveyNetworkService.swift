@@ -11,6 +11,7 @@ protocol SurveyNetworkService {
     func getSurveyFeed(token: String, count: Int, startAfter: String?, completion: @escaping([SurveyJSON]?, Error?)->Void)
     func getSurvey(token: String, id: String, completion: @escaping(SurveyJSON?, Error?)->Void)
     func makeVote(token: String, params: VoteParams, completion: @escaping (SurveyJSON?, Error?)->Void)
+    func createSurvey(token: String, params: SurveyParams, completion: @escaping (SurveyJSON?, Error?)->Void)
 }
 
 extension NetworkClient: SurveyNetworkService {
@@ -73,6 +74,46 @@ extension NetworkClient: SurveyNetworkService {
                 completion(nil, error)
             }
         })
+    }
+    
+    func createSurvey(token: String, params: SurveyParams, completion: @escaping  (SurveyJSON?, Error?)->Void) {
+        
+        let path = "surveys"
+        
+        guard let encodedParams = JsonHelper.shared.encode(value: params) else {
+            return
+        }
+        
+        self.config.setToken(token: token)
+        
+        self.request(path: path, method: .post, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in
+            switch result {
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        })
+    }
+    
+    func getUserSurveys(token: String, completion: @escaping  ([SurveyJSON]?, Error?)->Void) {
+        
+        let path = "profile"
+        
+        self.config.setToken(token: token)
+        
+        self.request(path: path, method: .get, completion: { (result: Result<ProfileJSON,Error>) in
+            switch result {
+            case .success(let data):
+                let surveys = data.userSurveys
+                completion(surveys, nil)
+            case .failure(let error as CustomError):
+                completion(nil, error)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        })
+        
     }
     
 }

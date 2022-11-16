@@ -28,8 +28,4 @@ struct SurveyDataJSON: Codable {
     }
 }
 
-struct SurveyListJSON: Codable {
-    var surveyList: [SurveyJSON]
-}
-
 
