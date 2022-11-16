@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateSurveyView: View {
+struct SaveSurveyView: View {
     
     var title: String
     @State var surveyTitle: String = ""

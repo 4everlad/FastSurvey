@@ -19,12 +19,30 @@ struct UserSurveysListView: View, IItemView {
             ForEach(viewModel.surveys) { item in
                 SurveyCellView(survey: item)
                     .contentShape(Rectangle())
+                    .contextMenu {
+                        VStack {
+                            Button (action: {
+                                viewModel.removeSurvey(item)
+                            }){
+                                HStack {
+                                    Text("remove")
+                                    Image(systemName: "trash")
+                                }
+                            }
+                        }
+                    } // .contextMenu
                     .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)
-        .onAppear {
+        .refreshable {
             viewModel.getSurveys()
+        }
+    }
+    
+    func removeItems(at offsets: IndexSet) {
+        for index in offsets {
+            viewModel.removeSurvey(at: index)
         }
     }
 }

@@ -30,7 +30,7 @@ struct UserSurveysScreenView: View, IItemView {
                     Image(systemName: "square.and.pencil")
                 })
                                         .sheet(isPresented: $showModal) {
-                    CreateSurveyView(title: "Create Survey", saveClicked: { title, description in
+                    SaveSurveyView(title: "Create Survey", saveClicked: { title, description in
                         showModal.toggle()
                         viewModel.makeSurvey(title: title, description: description)
                     })
@@ -38,9 +38,12 @@ struct UserSurveysScreenView: View, IItemView {
                 )
             }
         } // NavigationView
-        .onChange(of: viewModel.surveys, perform: {newValue in
-            print("refresh")
-        })
+//        .onChange(of: viewModel.surveys, perform: {newValue in
+//            viewModel.sortSurveys()
+//        })
+        .onAppear {
+            viewModel.getSurveys()
+        }
     }
 }
 
