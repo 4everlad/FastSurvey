@@ -22,10 +22,20 @@ struct UserSurveysListView: View, IItemView {
                     .contextMenu {
                         VStack {
                             Button (action: {
-                                viewModel.removeSurvey(item)
-                            }){
+                                viewModel.saveSurveyState.set(with: item)
+                                viewModel.showModal.toggle()
+                            }) {
                                 HStack {
-                                    Text("remove")
+                                    Text("Edit")
+                                    Image(systemName: "pencil.circle")
+                                }
+                            }
+                            
+                            Button (role: .destructive) {
+                                viewModel.removeSurvey(item)
+                            } label: {
+                                HStack {
+                                    Text("Remove")
                                     Image(systemName: "trash")
                                 }
                             }

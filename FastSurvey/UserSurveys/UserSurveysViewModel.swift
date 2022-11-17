@@ -13,9 +13,10 @@ class UserSurveysViewModel: ObservableObject {
     
     @Published var surveys: [Survey] = []
     @Published var isLoading: Bool = false
+    @Published var showModal: Bool = false
+    @Published var saveSurveyState = SaveSurveyState()
     
     func makeSurvey(title: String, description: String) {
-        
         guard !isLoading else { return }
         guard let token = accountManager.token else {
             return
@@ -79,6 +80,34 @@ class UserSurveysViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.isLoading = false
                 self?.surveys.remove(at: index)
+            }
+        })
+    }
+    
+    func updateSurvey(title: String, description: String, surveyId: String) {
+        guard !isLoading else { return }
+        guard let token = accountManager.token else { return }
+        
+        let params = SurveyParams(title: title, desc: description)
+        
+        isLoading = true
+        
+        NetworkClient().updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
+            
+            if let json = survey {
+                let survey = Survey(with: json)
+                
+                guard let index = self?.surveys.firstIndex(where: {$0.sid == surveyId}) else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    self?.surveys[index] = survey
+                }
+                
+            } else if let error = error {
+                print(error.localizedDescription)
             }
         })
     }

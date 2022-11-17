@@ -11,8 +11,6 @@ import SwiftUINavigator
 struct UserSurveysScreenView: View, IItemView {
     var listener: INavigationContainer?
     
-    @State var showModal: Bool = false
-    
     @StateObject var viewModel: UserSurveysViewModel = .init()
     
     var body: some View {
@@ -21,26 +19,37 @@ struct UserSurveysScreenView: View, IItemView {
                 VStack {
                     UserSurveysListView(listener: listener, viewModel: viewModel)
                 }
+                .padding([.top])
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(Text("My Surveys"))
                 .navigationBarItems(trailing:
                                         Button(action: {
-                    showModal.toggle()
+                    viewModel.showModal.toggle()
                 }, label: {
                     Image(systemName: "square.and.pencil")
                 })
-                                        .sheet(isPresented: $showModal) {
-                    SaveSurveyView(title: "Create Survey", saveClicked: { title, description in
-                        showModal.toggle()
-                        viewModel.makeSurvey(title: title, description: description)
+                                        .sheet(isPresented: $viewModel.showModal) {
+                    SaveSurveyView(saveSurveyState: $viewModel.saveSurveyState,
+                                   saveClicked: {
+                        viewModel.showModal.toggle()
+                        let title = viewModel.saveSurveyState.title
+                        let description = viewModel.saveSurveyState.description
+                        let surveyId = viewModel.saveSurveyState.surveyId
+                        
+                        switch viewModel.saveSurveyState.operationType {
+                        case .add:
+                            viewModel.makeSurvey(title: title, description: description)
+                        case .update:
+                            viewModel.updateSurvey(title: title, description: description, surveyId: surveyId)
+                        }
+                        
+                        viewModel.saveSurveyState.reset()
+                        
                     })
                 }
                 )
-            }
-        } // NavigationView
-//        .onChange(of: viewModel.surveys, perform: {newValue in
-//            viewModel.sortSurveys()
-//        })
+            } // LoadingView
+        }
         .onAppear {
             viewModel.getSurveys()
         }

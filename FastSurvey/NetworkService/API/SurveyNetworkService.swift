@@ -140,4 +140,24 @@ extension NetworkClient: SurveyNetworkService {
         })
     }
     
+    func updateSurvey(token: String, params: SurveyParams, id: String, completion: @escaping(SurveyJSON?, Error?)->Void) {
+        let endpoint = "survey/\(id)"
+        
+        guard let encodedParams = JsonHelper.shared.encode(value: params) else {
+            return
+        }
+        
+        self.config.setToken(token: token)
+        
+        self.request(path: endpoint, method: .put, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in
+            switch result {
+            case .success(let data):
+                completion(data, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        })
+        
+    }
+    
 }
