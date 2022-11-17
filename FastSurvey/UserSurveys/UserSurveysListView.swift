@@ -19,6 +19,9 @@ struct UserSurveysListView: View, IItemView {
             ForEach(viewModel.surveys) { item in
                 SurveyCellView(survey: item)
                     .contentShape(Rectangle())
+                    .onTapGesture {
+                        listener?.push(view: SurveyScreenView(surveyID: item.sid))
+                    }
                     .contextMenu {
                         VStack {
                             Button (action: {

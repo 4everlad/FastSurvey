@@ -35,6 +35,8 @@
 		D7650300291266E60054237A /* VoteSurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* VoteSurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D768983F291E8BD800B3A13C /* VoteParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768983E291E8BD800B3A13C /* VoteParams.swift */; };
+		D78FDB272926511A00F37153 /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB262926511A00F37153 /* SurveyScreenView.swift */; };
+		D78FDB292926514200F37153 /* SurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB282926514200F37153 /* SurveyViewModel.swift */; };
 		D7A9D6502921830000156E01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D64F2921830000156E01 /* LoadingView.swift */; };
 		D7A9D6542922A40F00156E01 /* UserAccountScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D6532922A40F00156E01 /* UserAccountScreenView.swift */; };
 		D7A9D6562922A4DF00156E01 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D6552922A4DF00156E01 /* UserAccountViewModel.swift */; };
@@ -87,6 +89,8 @@
 		D76502FF291266E60054237A /* VoteSurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteSurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D768983E291E8BD800B3A13C /* VoteParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteParams.swift; sourceTree = "<group>"; };
+		D78FDB262926511A00F37153 /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
+		D78FDB282926514200F37153 /* SurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewModel.swift; sourceTree = "<group>"; };
 		D7A9D64F2921830000156E01 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D7A9D6532922A40F00156E01 /* UserAccountScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountScreenView.swift; sourceTree = "<group>"; };
 		D7A9D6552922A4DF00156E01 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
@@ -251,6 +255,15 @@
 			path = VoteSurvey;
 			sourceTree = "<group>";
 		};
+		D78FDB25292650EE00F37153 /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				D78FDB262926511A00F37153 /* SurveyScreenView.swift */,
+				D78FDB282926514200F37153 /* SurveyViewModel.swift */,
+			);
+			path = Survey;
+			sourceTree = "<group>";
+		};
 		D7C3C259290FFD1C00D842F4 = {
 			isa = PBXGroup;
 			children = (
@@ -277,8 +290,9 @@
 				D73E88F42916DBF700F29CE6 /* UI */,
 				D73E88ED2916D9CF00F29CE6 /* Extensions */,
 				D7C3C276291001A700D842F4 /* SurveyFeed */,
-				D7C3C277291001C600D842F4 /* UserSurveys */,
 				D76502FE291266C90054237A /* VoteSurvey */,
+				D7C3C277291001C600D842F4 /* UserSurveys */,
+				D78FDB25292650EE00F37153 /* Survey */,
 				D7C3C2752910017E00D842F4 /* Auth */,
 				D7C3C273291000A700D842F4 /* TabController.swift */,
 				D7C3C265290FFD1C00D842F4 /* FastSurveyApp.swift */,
@@ -420,6 +434,7 @@
 				D73E891B291AA4D800F29CE6 /* LoadingProgressView.swift in Sources */,
 				D73E88F62916DC1C00F29CE6 /* IconTextField.swift in Sources */,
 				D7A9D6562922A4DF00156E01 /* UserAccountViewModel.swift in Sources */,
+				D78FDB272926511A00F37153 /* SurveyScreenView.swift in Sources */,
 				D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */,
 				D73E8928291BFEAF00F29CE6 /* LoginParams.swift in Sources */,
 				D73E88F32916DB8500F29CE6 /* Int+String.swift in Sources */,
@@ -429,6 +444,7 @@
 				D73E892A291BFF9B00F29CE6 /* AuthNetworkService.swift in Sources */,
 				D7A9D6502921830000156E01 /* LoadingView.swift in Sources */,
 				D73E8922291AD32400F29CE6 /* SurveyNetworkService.swift in Sources */,
+				D78FDB292926514200F37153 /* SurveyViewModel.swift in Sources */,
 				D73E88F12916DAAA00F29CE6 /* SignupView.swift in Sources */,
 				D7A9D6602924EF9700156E01 /* ProfileJSON.swift in Sources */,
 				D7C3C274291000A700D842F4 /* TabController.swift in Sources */,
