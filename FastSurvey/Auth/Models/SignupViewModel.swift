@@ -45,8 +45,36 @@ final class SignupViewModel: ObservableObject {
     private(set)var allAges: [Int] = Array<Int>(18...99)
     private(set)var allCountries = ["ru", "en", "us"]
     
+    func validateData() -> Bool {
+        guard username.count > 0 else {
+            errorMessage = "Enter name"
+            return false
+        }
+        
+        guard email.count > 0 && isValidEmail(email) else {
+            errorMessage = "Enter valid email"
+            return false
+        }
+        
+        guard password.count > 0 else {
+            errorMessage = "Enter password"
+            return false
+        }
+        
+        errorMessage = ""
+        return true
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
     func makeSignup(completion: @escaping (Bool)->(Void)) {
         
+        guard validateData() else { return }
+            
         isLoading = true
         let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
         let params = SignupParams(password: password, data: userData)
