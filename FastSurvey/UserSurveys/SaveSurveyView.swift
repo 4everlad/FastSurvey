@@ -40,6 +40,21 @@ struct SaveSurveyView: View {
     
     var saveClicked: (() -> ())
     
+    func validateData() -> Bool {
+        guard saveSurveyState.title.count > 0 else {
+            errorMessage = "Enter title"
+            return false
+        }
+        
+        guard saveSurveyState.description.count > 0 else {
+            errorMessage = "Enter description"
+            return false
+        }
+        
+        errorMessage = ""
+        return true
+    }
+    
     var body: some View {
         VStack {
             Text(saveSurveyState.operationType.rawValue)
@@ -53,6 +68,9 @@ struct SaveSurveyView: View {
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 1))
                     .frame(maxWidth: .infinity)
                     .frame(minHeight: 80, maxHeight: 100)
+                    .onChange(of: saveSurveyState.title, perform: { newValue in
+                        errorMessage = ""
+                    })
                     
             }
             .padding([.bottom])
@@ -62,6 +80,9 @@ struct SaveSurveyView: View {
                     .font(.subheadline)
                 TextEditor(text: $saveSurveyState.description)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 1))
+                    .onChange(of: saveSurveyState.description, perform: { newValue in
+                        errorMessage = ""
+                    })
             }
             .padding([.bottom])
             
@@ -72,6 +93,7 @@ struct SaveSurveyView: View {
                     .foregroundColor(.red)
                     .padding()
                 Button {
+                    guard validateData() else { return }
                     saveClicked()
                 } label: {
                     Text("Save")
