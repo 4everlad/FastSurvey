@@ -19,7 +19,7 @@ struct FastSurveyApp: App {
             NavigationContainerView(transition: Transition.custom(.scale)) {
                 AuthScreenView()
             }
-            .environmentObject(SurveyFeedViewModel())
+            .environmentObject(AccountManager.shared.router)
         }
     }
 }

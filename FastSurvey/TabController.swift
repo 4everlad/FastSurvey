@@ -12,11 +12,11 @@ struct TabController: View, IItemView {
     
     var listener: INavigationContainer?
     
-    @State var tabSelection: Int = 0
+    @EnvironmentObject var router: Router
     
     var body: some View {
         
-        TabView(selection: $tabSelection) {
+        TabView(selection: $router.tabSelection) {
             SurveyFeedScreenView(listener: listener)
                 .tag(0)
                 .tabItem {

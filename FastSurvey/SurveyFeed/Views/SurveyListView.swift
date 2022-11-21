@@ -12,7 +12,7 @@ import SwiftUINavigator
 struct SurveysListView: View, IItemView {
     var listener: INavigationContainer?
     
-    @EnvironmentObject var viewModel: SurveyFeedViewModel
+    @ObservedObject var viewModel: SurveyFeedViewModel
     
     var body: some View {
         List {

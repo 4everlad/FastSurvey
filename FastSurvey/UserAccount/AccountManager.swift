@@ -12,4 +12,8 @@ class AccountManager {
     static let shared = AccountManager()
     
     var token: String?
+    
+    lazy var router: Router = {
+        return Router()
+    }()
 }
