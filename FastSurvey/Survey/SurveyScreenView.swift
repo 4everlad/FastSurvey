@@ -36,16 +36,59 @@ struct SurveyScreenView: View, IItemView {
                     }
                     
                 }
-                .navigationBarItems(leading:
-                                        Button(action: {
-                    listener?.pop()
-                }, label: {
-                    Text("Back")
-                })
-                )
                 .navigationBarTitle(Text("Survey"))
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Back") {
+                            listener?.pop()
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundColor(.blue)
+                            .contextMenu {
+                                VStack {
+                                    Button (action: {
+                                        viewModel.saveSurveyState.set(with: viewModel.survey)
+                                        viewModel.showModal.toggle()
+                                    }) {
+                                        HStack {
+                                            Text("Edit")
+                                            Image(systemName: "pencil.circle")
+                                        }
+                                    }
+                                    
+                                    Button (role: .destructive) {
+                                        viewModel.removeSurvey(completion: {
+                                            listener?.pop()
+                                        })
+                                    } label: {
+                                        HStack {
+                                            Text("Remove")
+                                            Image(systemName: "trash")
+                                        }
+                                    }
+                                }
+                            } // .contextMenu
+                            .sheet(isPresented: $viewModel.showModal) {
+                                SaveSurveyView(saveSurveyState: $viewModel.saveSurveyState,
+                                               saveClicked: {
+                                    viewModel.showModal.toggle()
+                                    let title = viewModel.saveSurveyState.title
+                                    let description = viewModel.saveSurveyState.description
+                                    let surveyId = viewModel.saveSurveyState.surveyId
+                                    
+                                    if viewModel.saveSurveyState.operationType == .update {
+                                        viewModel.updateSurvey(title: title, description: description, surveyId: surveyId)
+                                    }
+                                    
+                                    viewModel.saveSurveyState.reset()
+                                })
+                            } // .sheet
+                    }
+                }
             }
         }
     }

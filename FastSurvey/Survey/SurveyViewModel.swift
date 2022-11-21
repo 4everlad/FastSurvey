@@ -16,7 +16,12 @@ class SurveyViewModel: ObservableObject {
             setVoteCounters()
         }
     }
+    
+    @Published var saveSurveyState = SaveSurveyState()
+    
     @Published var isLoading = false
+    @Published var showModal = false
+    
     @Published var upCounter = 0
     @Published var downCounter = 0
     
@@ -43,6 +48,50 @@ class SurveyViewModel: ObservableObject {
             }
         })
         
+    }
+    
+    func updateSurvey(title: String, description: String, surveyId: String) {
+        guard !isLoading else { return }
+        guard let token = accountManager.token else { return }
+        
+        let params = SurveyParams(title: title, desc: description)
+        
+        isLoading = true
+        
+        NetworkClient().updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
+            
+            if let json = survey {
+                let survey = Survey(with: json)
+                
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    self?.survey = survey
+                }
+                
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        })
+    }
+    
+    func removeSurvey(completion: @escaping () -> Void) {
+        guard !isLoading else { return }
+        guard let token = accountManager.token else { return }
+        
+        isLoading = true
+        
+        NetworkClient().removeSurvey(token: token, id: survey.id, completion: { [weak self] result, message in
+            
+            guard result == true else {
+                self?.isLoading = false
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                completion()
+            }
+        })
     }
     
     func setVoteCounters() {
