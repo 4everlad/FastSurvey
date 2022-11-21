@@ -38,6 +38,8 @@
 		D78FDB272926511A00F37153 /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB262926511A00F37153 /* SurveyScreenView.swift */; };
 		D78FDB292926514200F37153 /* SurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB282926514200F37153 /* SurveyViewModel.swift */; };
 		D7A89B54292BB30200423D2E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A89B53292BB30200423D2E /* Router.swift */; };
+		D7A89B56292C0A1100423D2E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A89B55292C0A1100423D2E /* User.swift */; };
+		D7A89B58292C101F00423D2E /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A89B57292C101F00423D2E /* UserNetworkService.swift */; };
 		D7A9D6502921830000156E01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D64F2921830000156E01 /* LoadingView.swift */; };
 		D7A9D6542922A40F00156E01 /* UserAccountScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D6532922A40F00156E01 /* UserAccountScreenView.swift */; };
 		D7A9D6562922A4DF00156E01 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D6552922A4DF00156E01 /* UserAccountViewModel.swift */; };
@@ -93,6 +95,8 @@
 		D78FDB262926511A00F37153 /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D78FDB282926514200F37153 /* SurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewModel.swift; sourceTree = "<group>"; };
 		D7A89B53292BB30200423D2E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D7A89B55292C0A1100423D2E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D7A89B57292C101F00423D2E /* UserNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
 		D7A9D64F2921830000156E01 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D7A9D6532922A40F00156E01 /* UserAccountScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountScreenView.swift; sourceTree = "<group>"; };
 		D7A9D6552922A4DF00156E01 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			children = (
 				D73E8921291AD32400F29CE6 /* SurveyNetworkService.swift */,
 				D73E8929291BFF9B00F29CE6 /* AuthNetworkService.swift */,
+				D7A89B57292C101F00423D2E /* UserNetworkService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				D73E891F291ACAF100F29CE6 /* AccountManager.swift */,
 				D7A9D6532922A40F00156E01 /* UserAccountScreenView.swift */,
 				D7A9D6552922A4DF00156E01 /* UserAccountViewModel.swift */,
+				D7A89B55292C0A1100423D2E /* User.swift */,
 			);
 			path = UserAccount;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				D7A9D65E2923B2E300156E01 /* UserSurveysListView.swift in Sources */,
 				D73E89062917038400F29CE6 /* SignupViewModel.swift in Sources */,
 				D768983F291E8BD800B3A13C /* VoteParams.swift in Sources */,
+				D7A89B58292C101F00423D2E /* UserNetworkService.swift in Sources */,
 				D73E892A291BFF9B00F29CE6 /* AuthNetworkService.swift in Sources */,
 				D7A9D6502921830000156E01 /* LoadingView.swift in Sources */,
 				D73E8922291AD32400F29CE6 /* SurveyNetworkService.swift in Sources */,
@@ -470,6 +477,7 @@
 				D7C3C266290FFD1C00D842F4 /* FastSurveyApp.swift in Sources */,
 				D73E88FA2916DC5F00F29CE6 /* PickerButton.swift in Sources */,
 				D7A89B54292BB30200423D2E /* Router.swift in Sources */,
+				D7A89B56292C0A1100423D2E /* User.swift in Sources */,
 				D7C3C28029104A4800D842F4 /* SurveyListView.swift in Sources */,
 				D73E8932291E565700F29CE6 /* Binding+Extension.swift in Sources */,
 				D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */,

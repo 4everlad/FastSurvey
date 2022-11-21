@@ -78,7 +78,6 @@ class VoteSurveyViewModel: ObservableObject {
     
     func makeVote(vote: VoteType) {
         guard let token = accountManager.token else {
-            print("ffffff no token")
             return
         }
         

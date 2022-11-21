@@ -11,11 +11,42 @@ import SwiftUINavigator
 struct UserAccountScreenView: View, IItemView {
     
     var listener: INavigationContainer?
+    @StateObject var viewModel: UserAccountViewModel = .init()
     
     var body: some View {
         NavigationView {
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                Form {
+                    HStack {
+                        Text("Name")
+                        Spacer()
+                        Text(viewModel.user.name)
+                    }
+                    
+                    HStack {
+                        Text("Email")
+                        Spacer()
+                        Text(viewModel.user.email)
+                    }
+                    
+                    HStack {
+                        Text("Age")
+                        Spacer()
+                        Text(viewModel.user.age)
+                    }
+                    
+                    HStack {
+                        Text("Gender")
+                        Spacer()
+                        Text(viewModel.user.sex)
+                    }
+                    
+                    HStack {
+                        Text("Country")
+                        Spacer()
+                        Text(viewModel.user.countryCode)
+                    }
+                }
             }
             .navigationBarItems(trailing:
                                     Button(action: {
@@ -27,12 +58,15 @@ struct UserAccountScreenView: View, IItemView {
             .navigationTitle(Text("Profile"))
             .navigationBarTitleDisplayMode(.inline)
         }
+        .onAppear {
+            viewModel.getUser()
+        }
         
     }
 }
 
-struct UserAccountScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserAccountScreenView()
-    }
-}
+//struct UserAccountScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserAccountScreenView()
+//    }
+//}

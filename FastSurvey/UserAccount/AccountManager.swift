@@ -16,4 +16,8 @@ class AccountManager {
     lazy var router: Router = {
         return Router()
     }()
+    
+//    lazy var userViewModel: UserAccountViewModel = {
+//        return UserAccountViewModel()
+//    }()
 }
