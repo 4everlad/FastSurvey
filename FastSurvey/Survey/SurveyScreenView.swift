@@ -80,17 +80,14 @@ struct SurveyScreenView: View, IItemView {
                                     let description = viewModel.saveSurveyState.description
                                     let surveyId = viewModel.saveSurveyState.surveyId
                                     
-                                    if viewModel.saveSurveyState.operationType == .update {
-                                        viewModel.updateSurvey(title: title, description: description, surveyId: surveyId)
-                                    }
-                                    
+                                    viewModel.updateSurvey(title: title, description: description, surveyId: surveyId)
                                     viewModel.saveSurveyState.reset()
                                 })
                             } // .sheet
                     }
                 }
-            }
-        }
+            } // LoadingView
+        } // NavigationView
     }
     
 }
