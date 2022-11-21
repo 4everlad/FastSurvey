@@ -31,7 +31,7 @@ struct SurveyScreenView: View, IItemView {
                         
                         Spacer()
                         
-                        Text("Downvoted: \(viewModel.upCounter)")
+                        Text("Downvoted: \(viewModel.downCounter)")
                             .foregroundColor(.red)
                     }
                     
