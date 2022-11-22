@@ -42,16 +42,4 @@ class JsonHelper {
         }
     }
     
-    func encodeString<T:Codable>(value: T)->[String:String]? {
-        do {
-            let content = try JSONSerialization.jsonObject(with: encoder.encode(value),
-                                                           options: []) as? [String: String]
-            return content
-        }
-        catch {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
-    
 }

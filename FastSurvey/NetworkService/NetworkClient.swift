@@ -20,6 +20,7 @@ class NetworkClient {
     private lazy var urlSession: URLSession? = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 60
         let session = URLSession(configuration: configuration)
         return session
     }()
@@ -55,15 +56,27 @@ class NetworkClient {
         
         self.urlDataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { data, response, error in
             
-            if let data = data {
-                if let decoded = JsonHelper.shared.decode(type: T.self, data: data) {
-                    completion(.success(decoded))
+            guard let httpResponse = response as? HTTPURLResponse,
+                  let data = data else {
+                      completion(.failure(CustomError(message: "Empty")))
+                      return
+                  }
+            
+            guard httpResponse.statusCode == 200 else {
+                if let json = String(data: data, encoding: .utf8) {
+                    completion(.failure(CustomError(message: json)))
                 } else {
-                    if let json = String(data: data, encoding: .utf8) {
-                        completion(.failure(CustomError(message: json)))
-                    } else { completion(.failure(CustomError(message: "Empty"))) }
+                    completion(.failure(CustomError(message: "Empty")))
                 }
+                return
             }
+            
+            if let decoded = JsonHelper.shared.decode(type: T.self, data: data) {
+                completion(.success(decoded))
+            } else if let json = String(data: data, encoding: .utf8) {
+                completion(.success(SuccessResponse(message: json) as! T))
+            }
+           
         })
         self.urlDataTask?.resume()
     }
@@ -95,7 +108,16 @@ class NetworkClient {
 
 class CustomError : Error {
     var message: String = ""
+    
     init(message: String) {
         self.message = message
+    }
+}
+
+struct SuccessResponse : Codable {
+    var message: String
+    
+    enum CodingKeys: String, CodingKey {
+        case message
     }
 }

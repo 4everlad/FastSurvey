@@ -21,7 +21,7 @@ extension NetworkClient: AuthNetworkService {
             return
         }
         
-        self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<SignupRequestJSON,Error>) in
+        self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<AuthRequestJSON,Error>) in
             switch result {
             case .success(let data):
                 completion(true, data.token)
@@ -41,7 +41,7 @@ extension NetworkClient: AuthNetworkService {
             return
         }
         
-        self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<SignupRequestJSON,Error>) in
+        self.request(path: endpoint, method: .post, params: encodedParams) { (result: Result<AuthRequestJSON,Error>) in
             switch result {
             case .success(let data):
                 completion(true, data.token)

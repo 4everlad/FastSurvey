@@ -21,7 +21,7 @@
 		D73E890B2917EB4A00F29CE6 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890A2917EB4A00F29CE6 /* NetworkClient.swift */; };
 		D73E890D2917EB9500F29CE6 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890C2917EB9500F29CE6 /* NetworkConfiguration.swift */; };
 		D73E890F2917ED3400F29CE6 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E890E2917ED3400F29CE6 /* JSONHelper.swift */; };
-		D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89142917F87400F29CE6 /* SignupJSON.swift */; };
+		D73E89152917F87400F29CE6 /* AuthRequestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E89142917F87400F29CE6 /* AuthRequestJSON.swift */; };
 		D73E8918291AA48900F29CE6 /* View+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E8917291AA48900F29CE6 /* View+Loading.swift */; };
 		D73E891B291AA4D800F29CE6 /* LoadingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E891A291AA4D800F29CE6 /* LoadingProgressView.swift */; };
 		D73E8920291ACAF100F29CE6 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E891F291ACAF100F29CE6 /* AccountManager.swift */; };
@@ -59,6 +59,8 @@
 		D7C3C28229104A7E00D842F4 /* SurveyFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */; };
 		D7C3C28629104E1400D842F4 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C28529104E1400D842F4 /* Survey.swift */; };
 		D7C3C288291131E300D842F4 /* SurveyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3C287291131E300D842F4 /* SurveyCellView.swift */; };
+		D7CBE50C292D0EA8000583C7 /* SignupParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBE50B292D0EA8000583C7 /* SignupParams.swift */; };
+		D7CBE50E292D0EDE000583C7 /* UserDataJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBE50D292D0EDE000583C7 /* UserDataJSON.swift */; };
 		D7F95EFB2912F81B00645875 /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F95EFA2912F81B00645875 /* VoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +79,7 @@
 		D73E890A2917EB4A00F29CE6 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		D73E890C2917EB9500F29CE6 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		D73E890E2917ED3400F29CE6 /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
-		D73E89142917F87400F29CE6 /* SignupJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupJSON.swift; sourceTree = "<group>"; };
+		D73E89142917F87400F29CE6 /* AuthRequestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestJSON.swift; sourceTree = "<group>"; };
 		D73E89162917FE0000F29CE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D73E8917291AA48900F29CE6 /* View+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Loading.swift"; sourceTree = "<group>"; };
 		D73E891A291AA4D800F29CE6 /* LoadingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProgressView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,8 @@
 		D7C3C28129104A7E00D842F4 /* SurveyFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyFeedViewModel.swift; sourceTree = "<group>"; };
 		D7C3C28529104E1400D842F4 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		D7C3C287291131E300D842F4 /* SurveyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCellView.swift; sourceTree = "<group>"; };
+		D7CBE50B292D0EA8000583C7 /* SignupParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupParams.swift; sourceTree = "<group>"; };
+		D7CBE50D292D0EDE000583C7 /* UserDataJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataJSON.swift; sourceTree = "<group>"; };
 		D7F95EFA2912F81B00645875 /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,12 +202,14 @@
 		D73E89132917F83000F29CE6 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				D73E89142917F87400F29CE6 /* SignupJSON.swift */,
+				D73E89142917F87400F29CE6 /* AuthRequestJSON.swift */,
 				D73E8923291B027800F29CE6 /* SurveyJSON.swift */,
 				D73E8927291BFEAF00F29CE6 /* LoginParams.swift */,
 				D768983E291E8BD800B3A13C /* VoteParams.swift */,
 				D7A9D65B2923AC6B00156E01 /* SurveyParams.swift */,
 				D7A9D65F2924EF9700156E01 /* ProfileJSON.swift */,
+				D7CBE50B292D0EA8000583C7 /* SignupParams.swift */,
+				D7CBE50D292D0EDE000583C7 /* UserDataJSON.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -437,7 +443,7 @@
 			files = (
 				D7A9D65829238E2C00156E01 /* UserSurveysViewModel.swift in Sources */,
 				D7A9D65A292394E500156E01 /* SaveSurveyView.swift in Sources */,
-				D73E89152917F87400F29CE6 /* SignupJSON.swift in Sources */,
+				D73E89152917F87400F29CE6 /* AuthRequestJSON.swift in Sources */,
 				D73E8918291AA48900F29CE6 /* View+Loading.swift in Sources */,
 				D73E88F82916DC3F00F29CE6 /* IconSecureField.swift in Sources */,
 				D73E891B291AA4D800F29CE6 /* LoadingProgressView.swift in Sources */,
@@ -451,6 +457,7 @@
 				D73E89062917038400F29CE6 /* SignupViewModel.swift in Sources */,
 				D768983F291E8BD800B3A13C /* VoteParams.swift in Sources */,
 				D7A89B58292C101F00423D2E /* UserNetworkService.swift in Sources */,
+				D7CBE50E292D0EDE000583C7 /* UserDataJSON.swift in Sources */,
 				D73E892A291BFF9B00F29CE6 /* AuthNetworkService.swift in Sources */,
 				D7A9D6502921830000156E01 /* LoadingView.swift in Sources */,
 				D73E8922291AD32400F29CE6 /* SurveyNetworkService.swift in Sources */,
@@ -483,6 +490,7 @@
 				D73E89022916DD1D00F29CE6 /* LoginView.swift in Sources */,
 				D73E8920291ACAF100F29CE6 /* AccountManager.swift in Sources */,
 				D73E890B2917EB4A00F29CE6 /* NetworkClient.swift in Sources */,
+				D7CBE50C292D0EA8000583C7 /* SignupParams.swift in Sources */,
 				D73E88EF2916D9EF00F29CE6 /* View+HalfSheet.swift in Sources */,
 				D73E890D2917EB9500F29CE6 /* NetworkConfiguration.swift in Sources */,
 			);

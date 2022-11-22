@@ -124,16 +124,12 @@ extension NetworkClient: SurveyNetworkService {
         
         self.config.setToken(token: token)
         
-        self.request(path: endpoint, method: .delete, completion: { (result: Result<String,Error>) in
+        self.request(path: endpoint, method: .delete, completion: { (result: Result<SuccessResponse,Error>) in
             switch result {
             case .success(_):
                 completion(true, nil)
             case .failure(let error as CustomError):
-                if error.message == "Removed" {
-                    completion(true, nil)
-                } else {
-                    completion(false, error.message)
-                }
+                completion(false, error.message)
             case .failure(let error):
                 completion(false, error.localizedDescription)
             }
