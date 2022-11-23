@@ -41,17 +41,17 @@ class SurveyFeedViewModel: ObservableObject {
                 }
                 DispatchQueue.main.async {
                     if !surveyFeed.isEmpty {
-                        self?.canLoad = true
                         self?.surveys.append(contentsOf: surveyFeed)
                         self?.currentSurveysCount += surveyFeed.count
-                    } else {
-                        self?.canLoad = false
                     }
                 }
             } else if let error = error {
                 print(error.localizedDescription)
             }
             
+            DispatchQueue.main.async {
+                self?.canLoad = true
+            }
         })
     }
     

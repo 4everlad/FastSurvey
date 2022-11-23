@@ -67,10 +67,13 @@ class VoteSurveyViewModel: ObservableObject {
             if let json = survey {
                 DispatchQueue.main.async {
                     self?.survey = Survey(with: json)
-                    self?.isLoading = false
                 }
             } else if let error = error {
                 print(error.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                self?.isLoading = false
             }
         })
         
@@ -92,10 +95,13 @@ class VoteSurveyViewModel: ObservableObject {
             if let json = survey {
                 DispatchQueue.main.async {
                     self?.survey = Survey(with: json)
-                    self?.isLoading = false
                 }
             } else if let error = error {
                 print(error.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                self?.isLoading = false
             }
         })
         
