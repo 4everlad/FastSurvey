@@ -17,7 +17,7 @@ enum AuthType {
 struct AuthScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    @State var authType: AuthType = .signup
+    @State var authType: AuthType = .login
     @State var isAuthed: Bool = false
     
     var body: some View {
