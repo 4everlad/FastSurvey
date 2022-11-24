@@ -14,6 +14,7 @@ protocol SurveyNetworkService {
     func createSurvey(token: String, params: SurveyParams, completion: @escaping (SurveyJSON?, Error?)->Void)
     func getUserSurveys(token: String, completion: @escaping  ([SurveyJSON]?, Error?)->Void)
     func removeSurvey(token: String, id: String, completion: @escaping(Bool, String?)->Void)
+    func removeSurveyAsync(token: String, id: String) async -> Bool
 }
 
 extension NetworkClient: SurveyNetworkService {
@@ -134,6 +135,20 @@ extension NetworkClient: SurveyNetworkService {
                 completion(false, error.localizedDescription)
             }
         })
+    }
+    
+    func removeSurveyAsync(token: String, id: String) async -> Bool {
+        let endpoint = "survey/\(id)"
+        
+        self.config.setToken(token: token)
+
+        let result = await self.requestAsync(path: endpoint, method: .delete) as Result<SuccessResponse, Error>
+        switch result {
+        case .success(_):
+            return true
+        case .failure(_):
+            return false
+        }
     }
     
     func updateSurvey(token: String, params: SurveyParams, id: String, completion: @escaping(SurveyJSON?, Error?)->Void) {

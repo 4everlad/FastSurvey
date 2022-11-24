@@ -28,34 +28,12 @@ class NetworkClient {
     private var urlDataTask: URLSessionDataTask? = nil
     
     func request<T:Codable>(path: String, method: Method = .get, params: [String:Any] = [:], completion: @escaping(Result<T,Error>)->Void) {
-        let baseUrl = config.getBaseUrl()
         
-        guard var urlComponents = URLComponents(string: "\(baseUrl)\(path)") else {
+        guard let urlRequest = getUrlRequest(path: path, method: method, params: params) else {
             return
         }
         
-        let queryItems = config.getQueryItems()
-        
-        if !queryItems.isEmpty {
-            urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
-        }
-        
-        var urlRequest = URLRequest(url: urlComponents.url!)
-        urlRequest.httpMethod = method.rawValue
-        
-        let headers = config.getHeaders()
-        
-        for h in headers {
-            urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
-        }
-        
-        if !params.isEmpty {
-            guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
-            urlRequest.httpBody = httpBody
-        }
-        
         self.urlDataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { data, response, error in
-            
             guard let httpResponse = response as? HTTPURLResponse,
                   let data = data else {
                       completion(.failure(CustomError(message: "Empty")))
@@ -82,26 +60,69 @@ class NetworkClient {
     }
     
     func requestAsync<T:Codable>(path: String, method: Method = .get, params: [String:Any] = [:]) async -> Result<T,Error> {
-        let baseUrl = config.getBaseUrl()
-        guard let url = URL(string: "\(baseUrl)\(path)") else {
-            return .failure(CustomError(message: "Wrong url"))
-        }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = method.rawValue
         
-        let headers = config.getHeaders()
-        for h in headers {
-            urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+        guard let urlRequest = getUrlRequest(path: path, method: method, params: params) else {
+            return .failure(CustomError(message: "Wrong url request"))
         }
         
         let content = try? await urlSession?.data(for: urlRequest, delegate: nil)
         if let content = content {
             let data = content.0
-            let json = String(data: data, encoding: .utf8)
+            let response = content.1
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return .failure(CustomError(message: "No http response"))
+            }
+            
+            guard httpResponse.statusCode == 200 else {
+                if let json = String(data: data, encoding: .utf8) {
+                    return .failure(CustomError(message: json))
+                } else {
+                    return .failure(CustomError(message: "Empty"))
+                }
+            }
+            
             if let decoded = JsonHelper.shared.decode(type: T.self, data: data) {
-               return .success(decoded)
-            }         }
-        return .failure(CustomError(message: "Empty"))
+                return .success(decoded)
+            } else if let json = String(data: data, encoding: .utf8) {
+                return .success(SuccessResponse(message: json) as! T)
+            }
+            
+        }
+        return .failure(CustomError(message: "No response"))
+    }
+    
+    func getUrlRequest(path: String, method: Method, params: [String:Any]) -> URLRequest?  {
+        let baseUrl = config.getBaseUrl()
+        
+        guard var urlComponents = URLComponents(string: "\(baseUrl)\(path)") else {
+            return nil
+        }
+        
+        let queryItems = config.getQueryItems()
+        
+        if !queryItems.isEmpty {
+            urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
+        }
+        
+        var urlRequest = URLRequest(url: urlComponents.url!)
+        urlRequest.httpMethod = method.rawValue
+        
+        let headers = config.getHeaders()
+        
+        for h in headers {
+            urlRequest.addValue(h.value, forHTTPHeaderField: h.key)
+        }
+        
+        if !params.isEmpty {
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else {
+                return nil
+            }
+            
+            urlRequest.httpBody = httpBody
+        }
+        
+        return urlRequest
     }
   
 }

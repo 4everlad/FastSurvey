@@ -72,16 +72,20 @@ class UserSurveysViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().removeSurvey(token: token, id: survey.id, completion: { [weak self] result, message in
-            
-            guard result == true else { return }
-            guard let index = self?.surveys.firstIndex(where: {$0.sid == survey.sid}) else { return }
-            
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                self?.surveys.remove(at: index)
+        Task {
+            do {
+                let result = await NetworkClient().removeSurveyAsync(token: token, id: survey.id)
+                guard result == true else { return }
+                guard let index = self.surveys.firstIndex(where: {$0.sid == survey.sid}) else { return }
+                
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.surveys.remove(at: index)
+                }
+            } catch {
+                print("async remove error")
             }
-        })
+        }
     }
     
     func updateSurvey(title: String, description: String, surveyId: String) {
