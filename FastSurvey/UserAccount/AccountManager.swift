@@ -45,6 +45,8 @@ class AccountManager {
             return
         }
         
+        router.isCheckingLogin = true
+        
         NetworkClient().getUserData(token: token, completion: { [weak self] (user, error) in
             if let json = user {
                 DispatchQueue.main.async {
@@ -54,6 +56,10 @@ class AccountManager {
                 }
             } else if let error = error {
                 print(error.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                self?.router.isCheckingLogin = false
             }
         })
     }

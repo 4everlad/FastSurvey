@@ -12,7 +12,6 @@ import SwiftUINavigator
 enum AuthType {
     case signup
     case login
-    case none
 }
 
 struct AuthScreenView: View, IItemView {
@@ -20,13 +19,6 @@ struct AuthScreenView: View, IItemView {
     var listener: INavigationContainer?
     @EnvironmentObject var router: Router
     @State var authType: AuthType = .login
-    
-    init() {
-        if AccountManager.shared.router.isAuthed == true {
-            authType = .none
-            listener?.push(view: TabController(listener: listener))
-        }
-    }
     
     func pushToSurveys(isAuthed: Bool) {
         if isAuthed {
@@ -37,17 +29,19 @@ struct AuthScreenView: View, IItemView {
     var body: some View {
         switch authType {
         case .signup:
-            SignupView(isAuthed: $router.isAuthed, authType: $authType)
-                .onChange(of: router.isAuthed) { newValue in
-                    pushToSurveys(isAuthed: newValue)
-                }
+            LoadingView(isShowing: $router.isCheckingLogin) {
+                SignupView(isAuthed: $router.isAuthed, authType: $authType)
+                    .onChange(of: router.isAuthed) { newValue in
+                        pushToSurveys(isAuthed: newValue)
+                    }
+            }
         case .login:
-            LoginView(authType: $authType, isAuthed: $router.isAuthed)
-                .onChange(of: router.isAuthed) { newValue in
-                    pushToSurveys(isAuthed: newValue)
-                }
-        case .none:
-            EmptyView()
+            LoadingView(isShowing: $router.isCheckingLogin) {
+                LoginView(authType: $authType, isAuthed: $router.isAuthed)
+                    .onChange(of: router.isAuthed) { newValue in
+                        pushToSurveys(isAuthed: newValue)
+                    }
+            }
         }
     }
 }
