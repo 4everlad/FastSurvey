@@ -23,6 +23,7 @@ struct AuthScreenView: View, IItemView {
     
     init() {
         if AccountManager.shared.router.isAuthed == true {
+            authType = .none
             listener?.push(view: TabController(listener: listener))
         }
     }

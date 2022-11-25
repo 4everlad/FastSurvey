@@ -51,6 +51,7 @@ struct UserAccountScreenView: View, IItemView {
             .navigationBarItems(trailing:
                                     Button(action: {
                 listener?.popToRoot()
+                viewModel.logOut()
             }, label: {
                 Image(systemName: "rectangle.portrait.and.arrow.right")
             })

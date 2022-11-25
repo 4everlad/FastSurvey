@@ -18,9 +18,6 @@ struct SurveyFeedScreenView: View, IItemView {
             VStack {
                 SurveysListView(listener: listener, viewModel: viewModel)
             }
-            .onAppear {
-                viewModel.getSurveys()
-            }
             .navigationTitle(Text("Survey Feed"))
             .navigationBarTitleDisplayMode(.inline)
         }

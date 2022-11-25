@@ -33,4 +33,8 @@ class UserAccountViewModel: ObservableObject {
             self?.isLoading = false
         })
     }
+    
+    func logOut() {
+        accountManager.logOut()
+    }
 }

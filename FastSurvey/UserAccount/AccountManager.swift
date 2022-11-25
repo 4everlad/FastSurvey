@@ -62,4 +62,14 @@ class AccountManager {
         self.token = token
     }
     
+    func logOut() {
+        guard let accountId = accountId else {
+            return
+        }
+        
+        SecureStorage().deleteToken(accountId: accountId)
+        router.tabSelection = 0
+        router.isAuthed = false
+    }
+    
 }
