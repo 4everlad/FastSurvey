@@ -9,4 +9,5 @@ import Foundation
 
 class Router : ObservableObject {
     @Published var tabSelection: Int = 0
+    @Published var isAuthed = false
 }

@@ -35,6 +35,10 @@
 		D7650300291266E60054237A /* VoteSurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76502FF291266E60054237A /* VoteSurveyScreenView.swift */; };
 		D76503022912C1950054237A /* VoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76503012912C1950054237A /* VoteButton.swift */; };
 		D768983F291E8BD800B3A13C /* VoteParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D768983E291E8BD800B3A13C /* VoteParams.swift */; };
+		D76D8C1F29312E2C005BF89F /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D8C1E29312E2C005BF89F /* SecureStorage.swift */; };
+		D76D8C2129312E95005BF89F /* KeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76D8C1D29312D46005BF89F /* KeychainWrapper.framework */; };
+		D76D8C2229312E95005BF89F /* KeychainWrapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D76D8C1D29312D46005BF89F /* KeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D76D8C2629313C97005BF89F /* AccountStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D8C2529313C97005BF89F /* AccountStorage.swift */; };
 		D78FDB272926511A00F37153 /* SurveyScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB262926511A00F37153 /* SurveyScreenView.swift */; };
 		D78FDB292926514200F37153 /* SurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78FDB282926514200F37153 /* SurveyViewModel.swift */; };
 		D7A89B54292BB30200423D2E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A89B53292BB30200423D2E /* Router.swift */; };
@@ -64,6 +68,30 @@
 		D7CBE510292D5A48000583C7 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBE50F292D5A48000583C7 /* NetworkMonitor.swift */; };
 		D7F95EFB2912F81B00645875 /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F95EFA2912F81B00645875 /* VoteView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D76D8C1C29312D46005BF89F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76D8C1829312D46005BF89F /* KeychainWrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D76D8C0329312AA0005BF89F;
+			remoteInfo = KeychainWrapper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D76D8C2329312E95005BF89F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D76D8C2229312E95005BF89F /* KeychainWrapper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D73E88EB2916D8E900F29CE6 /* AuthScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenView.swift; sourceTree = "<group>"; };
@@ -95,6 +123,9 @@
 		D76502FF291266E60054237A /* VoteSurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteSurveyScreenView.swift; sourceTree = "<group>"; };
 		D76503012912C1950054237A /* VoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteButton.swift; sourceTree = "<group>"; };
 		D768983E291E8BD800B3A13C /* VoteParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteParams.swift; sourceTree = "<group>"; };
+		D76D8C1829312D46005BF89F /* KeychainWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KeychainWrapper.xcodeproj; path = KeychainWrapper/KeychainWrapper.xcodeproj; sourceTree = SOURCE_ROOT; };
+		D76D8C1E29312E2C005BF89F /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
+		D76D8C2529313C97005BF89F /* AccountStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStorage.swift; sourceTree = "<group>"; };
 		D78FDB262926511A00F37153 /* SurveyScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreenView.swift; sourceTree = "<group>"; };
 		D78FDB282926514200F37153 /* SurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewModel.swift; sourceTree = "<group>"; };
 		D7A89B53292BB30200423D2E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -131,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76D8C2129312E95005BF89F /* KeychainWrapper.framework in Frameworks */,
 				D7C3C27E29100F9300D842F4 /* SwiftUINavigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +306,30 @@
 			path = VoteSurvey;
 			sourceTree = "<group>";
 		};
+		D76D8C1929312D46005BF89F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D76D8C1D29312D46005BF89F /* KeychainWrapper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D76D8C2029312E94005BF89F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D76D8C2429313C7D005BF89F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D76D8C1E29312E2C005BF89F /* SecureStorage.swift */,
+				D76D8C2529313C97005BF89F /* AccountStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		D78FDB25292650EE00F37153 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,8 +343,10 @@
 			isa = PBXGroup;
 			children = (
 				D7CBE511292E28E0000583C7 /* Packages */,
+				D76D8C1829312D46005BF89F /* KeychainWrapper.xcodeproj */,
 				D7C3C264290FFD1C00D842F4 /* FastSurvey */,
 				D7C3C263290FFD1C00D842F4 /* Products */,
+				D76D8C2029312E94005BF89F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -303,10 +361,11 @@
 		D7C3C264290FFD1C00D842F4 /* FastSurvey */ = {
 			isa = PBXGroup;
 			children = (
+				D76D8C2429313C7D005BF89F /* Storage */,
+				D73E89092917EADD00F29CE6 /* NetworkService */,
 				D73E891E291ACADC00F29CE6 /* UserAccount */,
 				D73E8919291AA4B900F29CE6 /* Modifiers */,
 				D73E89162917FE0000F29CE6 /* Info.plist */,
-				D73E89092917EADD00F29CE6 /* NetworkService */,
 				D73E88F42916DBF700F29CE6 /* UI */,
 				D73E88ED2916D9CF00F29CE6 /* Extensions */,
 				D7C3C276291001A700D842F4 /* SurveyFeed */,
@@ -388,6 +447,7 @@
 				D7C3C25E290FFD1C00D842F4 /* Sources */,
 				D7C3C25F290FFD1C00D842F4 /* Frameworks */,
 				D7C3C260290FFD1C00D842F4 /* Resources */,
+				D76D8C2329312E95005BF89F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -430,12 +490,28 @@
 			);
 			productRefGroup = D7C3C263290FFD1C00D842F4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D76D8C1929312D46005BF89F /* Products */;
+					ProjectRef = D76D8C1829312D46005BF89F /* KeychainWrapper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D7C3C261290FFD1C00D842F4 /* FastSurvey */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D76D8C1D29312D46005BF89F /* KeychainWrapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KeychainWrapper.framework;
+			remoteRef = D76D8C1C29312D46005BF89F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D7C3C260290FFD1C00D842F4 /* Resources */ = {
@@ -463,6 +539,7 @@
 				D73E88F62916DC1C00F29CE6 /* IconTextField.swift in Sources */,
 				D7A9D6562922A4DF00156E01 /* UserAccountViewModel.swift in Sources */,
 				D78FDB272926511A00F37153 /* SurveyScreenView.swift in Sources */,
+				D76D8C1F29312E2C005BF89F /* SecureStorage.swift in Sources */,
 				D7CBE510292D5A48000583C7 /* NetworkMonitor.swift in Sources */,
 				D73E8908291710F100F29CE6 /* LoginViewModel.swift in Sources */,
 				D73E8928291BFEAF00F29CE6 /* LoginParams.swift in Sources */,
@@ -489,6 +566,7 @@
 				D73E88EC2916D8E900F29CE6 /* AuthScreenView.swift in Sources */,
 				D7A9D6542922A40F00156E01 /* UserAccountScreenView.swift in Sources */,
 				D76503022912C1950054237A /* VoteButton.swift in Sources */,
+				D76D8C2629313C97005BF89F /* AccountStorage.swift in Sources */,
 				D7650300291266E60054237A /* VoteSurveyScreenView.swift in Sources */,
 				D73E890F2917ED3400F29CE6 /* JSONHelper.swift in Sources */,
 				D73E8924291B027800F29CE6 /* SurveyJSON.swift in Sources */,

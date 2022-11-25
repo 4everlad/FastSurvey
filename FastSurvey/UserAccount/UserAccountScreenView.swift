@@ -11,7 +11,7 @@ import SwiftUINavigator
 struct UserAccountScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    @StateObject var viewModel: UserAccountViewModel = .init()
+    @EnvironmentObject var viewModel: UserAccountViewModel
     
     var body: some View {
         NavigationView {

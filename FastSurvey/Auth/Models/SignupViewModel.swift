@@ -82,7 +82,7 @@ final class SignupViewModel: ObservableObject {
         NetworkClient().makeSignup(params: params, completion: { result, message  in
             
             if result == true {
-                self.accountManager.token = message
+                self.accountManager.set(token: message)
                 completion(true)
             } else {
                 DispatchQueue.main.async {

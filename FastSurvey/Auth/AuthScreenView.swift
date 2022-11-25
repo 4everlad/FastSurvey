@@ -12,32 +12,41 @@ import SwiftUINavigator
 enum AuthType {
     case signup
     case login
+    case none
 }
 
 struct AuthScreenView: View, IItemView {
     
     var listener: INavigationContainer?
+    @EnvironmentObject var router: Router
     @State var authType: AuthType = .login
-    @State var isAuthed: Bool = false
+    
+    init() {
+        if AccountManager.shared.router.isAuthed == true {
+            listener?.push(view: TabController(listener: listener))
+        }
+    }
+    
+    func pushToSurveys(isAuthed: Bool) {
+        if isAuthed {
+            listener?.push(view: TabController(listener: listener))
+        }
+    }
     
     var body: some View {
         switch authType {
         case .signup:
-            SignupView(isAuthed: $isAuthed, authType: $authType)
-                .onChange(of: isAuthed) { newValue in
-                    if newValue == true {
-                        listener?.push(view: TabController(listener: listener))
-                        isAuthed = false
-                    }
+            SignupView(isAuthed: $router.isAuthed, authType: $authType)
+                .onChange(of: router.isAuthed) { newValue in
+                    pushToSurveys(isAuthed: newValue)
                 }
         case .login:
-            LoginView(authType: $authType, isAuthed: $isAuthed)
-                .onChange(of: isAuthed) { newValue in
-                    if newValue == true {
-                        listener?.push(view: TabController(listener: listener))
-                        isAuthed = false
-                    }
+            LoginView(authType: $authType, isAuthed: $router.isAuthed)
+                .onChange(of: router.isAuthed) { newValue in
+                    pushToSurveys(isAuthed: newValue)
                 }
+        case .none:
+            EmptyView()
         }
     }
 }
