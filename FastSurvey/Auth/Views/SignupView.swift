@@ -80,11 +80,6 @@ struct SignupView: View {
                         DispatchQueue.main.async {
                             self.isAuthed = result
                         }
-//                        if result == true {
-//                            self.isAuthed = true
-//                        } else {
-//                            self.isAuthed = false
-//                        }
                     })
                 } label: {
                     Text("Sign Up")
