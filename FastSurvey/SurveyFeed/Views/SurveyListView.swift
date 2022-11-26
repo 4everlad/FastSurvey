@@ -36,5 +36,8 @@ struct SurveysListView: View, IItemView {
         .onAppear {
             viewModel.getSurveys()
         }
+        .refreshable {
+            viewModel.getSurveys()
+        }
     }
 }

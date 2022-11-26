@@ -17,7 +17,7 @@ struct VoteView: View {
             VoteButton (
                 isVoted: $viewModel.stateButton.isUp,
                 counter: $viewModel.stateButton.upCounter,
-                text: "YES"
+                imageName: "hand.thumbsup.fill"
             ) {
                 viewModel.makeVote(vote: .up)
             }
@@ -25,7 +25,7 @@ struct VoteView: View {
             VoteButton (
                 isVoted: $viewModel.stateButton.isDown,
                 counter: $viewModel.stateButton.downCounter,
-                text: "NO"
+                imageName: "hand.thumbsdown.fill"
             ) {
                 viewModel.makeVote(vote: .down)
             }
