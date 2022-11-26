@@ -33,7 +33,10 @@ struct VoteSurveyScreenView: View, IItemView {
                                         Button(action: {
                     listener?.pop()
                 }, label: {
-                    Text("Feed")
+                    HStack {
+                        Image(systemName: "chevron.backward")
+                        Text("Feed")
+                    }
                 })
                 )
                 .navigationBarTitle(Text("Survey"))

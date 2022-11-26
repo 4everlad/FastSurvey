@@ -41,8 +41,13 @@ struct SurveyScreenView: View, IItemView {
                 .padding()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Back") {
+                        Button {
                             listener?.pop()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.backward")
+                                Text("Back")
+                            }
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
