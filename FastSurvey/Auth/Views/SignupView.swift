@@ -15,10 +15,6 @@ struct SignupView: View {
     @EnvironmentObject var router: Router
     @Binding var authType: AuthType
     
-    @State private var showingBottomAge = false
-    @State private var showingBottomGender = false
-    @State private var showingBottomCountry = false
-    
     var body: some View {
         LoadingView(isShowing: $viewModel.isLoading) {
             VStack(spacing: 16) {
@@ -30,13 +26,13 @@ struct SignupView: View {
                 
                 HStack(spacing: 16) {
                     PickerButton(text: $viewModel.age.string, placeholder: "Age") {
-                        showingBottomAge.toggle()
+                        self.viewModel.showBottomAge.toggle()
                     }
-                    .halfSheet(showSheet: $showingBottomAge) {
+                    .halfSheet(showSheet: $viewModel.showBottomAge) {
                         let ages = viewModel.allAges.map { String($0) }
                         BottomPickerView(title: "Choose age", currentValue: String(viewModel.age), items: ages, saveClicked: { age in
                             self.viewModel.age = Int(age) ?? -1
-                            showingBottomAge.toggle()
+                            self.viewModel.showBottomAge.toggle()
                         })
                         
                     } onEnd: {
@@ -45,13 +41,12 @@ struct SignupView: View {
                     
                     
                     PickerButton(text: $viewModel.gender, placeholder: "Gender") {
-                        showingBottomGender.toggle()
+                        self.viewModel.showBottomGender.toggle()
                     }
-                    .halfSheet(showSheet: $showingBottomGender) {
+                    .halfSheet(showSheet: $viewModel.showBottomGender) {
                         BottomPickerView(title: "Choose gender", currentValue: viewModel.gender, items: viewModel.allGenders, saveClicked: { gender in
                             self.viewModel.gender = gender
-                            showingBottomGender.toggle()
-                            print("ffff Save halfsheet gender")
+                            self.viewModel.showBottomGender.toggle()
                         })
                         
                     } onEnd: {
@@ -59,12 +54,12 @@ struct SignupView: View {
                     }
                     
                     PickerButton(text: $viewModel.country, placeholder: "Country") {
-                        showingBottomCountry.toggle()
+                        self.viewModel.showBottomCountry.toggle()
                     }
-                    .halfSheet(showSheet: $showingBottomCountry) {
+                    .halfSheet(showSheet: $viewModel.showBottomCountry) {
                         BottomPickerView(title: "Choose country", currentValue: viewModel.country, items: viewModel.allCountries, saveClicked: { country in
                             self.viewModel.country = country
-                            showingBottomCountry.toggle()
+                            self.viewModel.showBottomCountry.toggle()
                         })
                     } onEnd: {
                         print("Dismiss halfsheet")
