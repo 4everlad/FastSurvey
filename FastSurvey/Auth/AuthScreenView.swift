@@ -30,14 +30,14 @@ struct AuthScreenView: View, IItemView {
         switch authType {
         case .signup:
             LoadingView(isShowing: $router.isCheckingLogin) {
-                SignupView(isAuthed: $router.isAuthed, authType: $authType)
+                SignupView(authType: $authType)
                     .onChange(of: router.isAuthed) { newValue in
                         pushToSurveys(isAuthed: newValue)
                     }
             }
         case .login:
             LoadingView(isShowing: $router.isCheckingLogin) {
-                LoginView(authType: $authType, isAuthed: $router.isAuthed)
+                LoginView(authType: $authType)
                     .onChange(of: router.isAuthed) { newValue in
                         pushToSurveys(isAuthed: newValue)
                     }

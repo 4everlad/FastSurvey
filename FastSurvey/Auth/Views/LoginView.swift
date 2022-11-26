@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     
     @Binding var authType: AuthType
-    @Binding var isAuthed: Bool
     @StateObject var viewModel: LoginViewModel = .init()
+    @EnvironmentObject var router: Router
     
     var body: some View {
         LoadingView(isShowing: $viewModel.isLoading) {
@@ -29,7 +29,7 @@ struct LoginView: View {
                 Button {
                     viewModel.makeLogin(completion: { result in
                         DispatchQueue.main.async {
-                            self.isAuthed = result
+                            self.router.isAuthed = result
                         }
                     })
                 } label: {

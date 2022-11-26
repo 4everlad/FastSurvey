@@ -12,7 +12,7 @@ import SwiftUINavigator
 struct SignupView: View {
     
     @StateObject var viewModel: SignupViewModel = .init()
-    @Binding var isAuthed: Bool
+    @EnvironmentObject var router: Router
     @Binding var authType: AuthType
     
     @State private var showingBottomAge = false
@@ -40,34 +40,35 @@ struct SignupView: View {
                         })
                         
                     } onEnd: {
-                        print("Dismiss")
+                        print("Dismiss halfsheet")
                     }
                     
                     
-                    PickerButton(text: $viewModel.gender, placeholder: "Gender", clicked: {
+                    PickerButton(text: $viewModel.gender, placeholder: "Gender") {
                         showingBottomGender.toggle()
-                    })
-                        .halfSheet(showSheet: $showingBottomGender) {
-                            BottomPickerView(title: "Choose gender", currentValue: viewModel.gender, items: viewModel.allGenders, saveClicked: { gender in
-                                self.viewModel.gender = gender
-                                showingBottomGender.toggle()
-                            })
-                            
-                        } onEnd: {
-                            print("Dismiss")
-                        }
+                    }
+                    .halfSheet(showSheet: $showingBottomGender) {
+                        BottomPickerView(title: "Choose gender", currentValue: viewModel.gender, items: viewModel.allGenders, saveClicked: { gender in
+                            self.viewModel.gender = gender
+                            showingBottomGender.toggle()
+                            print("ffff Save halfsheet gender")
+                        })
+                        
+                    } onEnd: {
+                        print("Dismiss halfsheet")
+                    }
                     
-                    PickerButton(text: $viewModel.country, placeholder: "Country", clicked: {
+                    PickerButton(text: $viewModel.country, placeholder: "Country") {
                         showingBottomCountry.toggle()
-                    })
-                        .halfSheet(showSheet: $showingBottomCountry) {
-                            BottomPickerView(title: "Choose country", currentValue: viewModel.country, items: viewModel.allCountries, saveClicked: { country in
-                                self.viewModel.country = country
-                                showingBottomCountry.toggle()
-                            })
-                        } onEnd: {
-                            print("Dismiss")
-                        }
+                    }
+                    .halfSheet(showSheet: $showingBottomCountry) {
+                        BottomPickerView(title: "Choose country", currentValue: viewModel.country, items: viewModel.allCountries, saveClicked: { country in
+                            self.viewModel.country = country
+                            showingBottomCountry.toggle()
+                        })
+                    } onEnd: {
+                        print("Dismiss halfsheet")
+                    }
                     
                 }
                 
@@ -78,7 +79,7 @@ struct SignupView: View {
                 Button {
                     viewModel.makeSignup(completion: { result in
                         DispatchQueue.main.async {
-                            self.isAuthed = result
+                            self.router.isAuthed = result
                         }
                     })
                 } label: {
