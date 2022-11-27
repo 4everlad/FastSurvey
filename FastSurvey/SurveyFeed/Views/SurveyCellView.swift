@@ -19,9 +19,7 @@ struct SurveyCellView: View {
             VStack(alignment: .leading) {
                 Text(survey.title)
                     .font(.headline)
-                    .onAppear {
-                        print("ffffff \(survey.sid) -- is Displayed")
-                    }
+                    
                 Spacer()
                 
                 Text(survey.description)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Router : ObservableObject {
+class NavigationState : ObservableObject {
     @Published var tabSelection: Int = 0
     @Published var isAuthed = false
     @Published var isCheckingLogin = false

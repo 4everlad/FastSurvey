@@ -17,7 +17,7 @@ enum AuthType {
 struct AuthScreenView: View, IItemView {
     
     var listener: INavigationContainer?
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: NavigationState
     @State var authType: AuthType = .login
     
     func pushToSurveys(isAuthed: Bool) {

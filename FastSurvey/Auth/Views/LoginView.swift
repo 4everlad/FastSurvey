@@ -11,7 +11,7 @@ struct LoginView: View {
     
     @Binding var authType: AuthType
     @StateObject var viewModel: LoginViewModel = .init()
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: NavigationState
     
     var body: some View {
         LoadingView(isShowing: $viewModel.isLoading) {

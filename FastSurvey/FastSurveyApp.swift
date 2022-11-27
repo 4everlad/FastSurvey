@@ -20,7 +20,7 @@ struct FastSurveyApp: App {
             NavigationContainerView(transition: Transition.custom(.scale)) {
                 AuthScreenView()
             }
-            .environmentObject(AccountManager.shared.router)
+            .environmentObject(AccountManager.shared.navState)
             .environmentObject(AccountManager.shared.userModel)
         }
     }

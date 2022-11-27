@@ -12,7 +12,7 @@ import SwiftUINavigator
 struct SignupView: View {
     
     @StateObject var viewModel: SignupViewModel = .init()
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: NavigationState
     @Binding var authType: AuthType
     
     var body: some View {
@@ -28,41 +28,39 @@ struct SignupView: View {
                     PickerButton(text: $viewModel.age.string, placeholder: "Age") {
                         self.viewModel.showBottomAge.toggle()
                     }
-                    .halfSheet(showSheet: $viewModel.showBottomAge) {
-                        let ages = viewModel.allAges.map { String($0) }
-                        BottomPickerView(title: "Choose age", currentValue: String(viewModel.age), items: ages, saveClicked: { age in
-                            self.viewModel.age = Int(age) ?? -1
-                            self.viewModel.showBottomAge.toggle()
-                        })
-                        
-                    } onEnd: {
-                        print("Dismiss halfsheet")
+                    .sheet(isPresented: $viewModel.showBottomAge) {
+                        HalfSheet {
+                            let ages = viewModel.allAges.map { String($0) }
+                            BottomPickerView(title: "Choose age", currentValue: String(viewModel.age), items: ages, saveClicked: { age in
+                                self.viewModel.age = Int(age) ?? -1
+                                self.viewModel.showBottomAge.toggle()
+                            })
+                        }
                     }
                     
                     
                     PickerButton(text: $viewModel.gender, placeholder: "Gender") {
                         self.viewModel.showBottomGender.toggle()
                     }
-                    .halfSheet(showSheet: $viewModel.showBottomGender) {
-                        BottomPickerView(title: "Choose gender", currentValue: viewModel.gender, items: viewModel.allGenders, saveClicked: { gender in
-                            self.viewModel.gender = gender
-                            self.viewModel.showBottomGender.toggle()
-                        })
-                        
-                    } onEnd: {
-                        print("Dismiss halfsheet")
+                    .sheet(isPresented: $viewModel.showBottomGender) {
+                        HalfSheet {
+                            BottomPickerView(title: "Choose gender", currentValue: viewModel.gender, items: viewModel.allGenders, saveClicked: { gender in
+                                self.viewModel.gender = gender
+                                self.viewModel.showBottomGender.toggle()
+                            })
+                        }
                     }
                     
                     PickerButton(text: $viewModel.country, placeholder: "Country") {
                         self.viewModel.showBottomCountry.toggle()
                     }
-                    .halfSheet(showSheet: $viewModel.showBottomCountry) {
-                        BottomPickerView(title: "Choose country", currentValue: viewModel.country, items: viewModel.allCountries, saveClicked: { country in
-                            self.viewModel.country = country
-                            self.viewModel.showBottomCountry.toggle()
-                        })
-                    } onEnd: {
-                        print("Dismiss halfsheet")
+                    .sheet(isPresented: $viewModel.showBottomCountry) {
+                        HalfSheet {
+                            BottomPickerView(title: "Choose country", currentValue: viewModel.country, items: viewModel.allCountries, saveClicked: { country in
+                                self.viewModel.country = country
+                                self.viewModel.showBottomCountry.toggle()
+                            })
+                        }
                     }
                     
                 }

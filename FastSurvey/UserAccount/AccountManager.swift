@@ -26,8 +26,8 @@ class AccountManager {
         }
     }
     
-    lazy var router: Router = {
-        return Router()
+    lazy var navState: NavigationState = {
+        return NavigationState()
     }()
     
     lazy var userModel: UserAccountViewModel = {
@@ -45,13 +45,13 @@ class AccountManager {
             return
         }
         
-        router.isCheckingLogin = true
+        navState.isCheckingLogin = true
         
         NetworkClient().getUserData(token: token, completion: { [weak self] (user, error) in
             if let json = user {
                 DispatchQueue.main.async {
                     self?.userModel.user.update(with: json)
-                    self?.router.isAuthed = true
+                    self?.navState.isAuthed = true
                     self?.token = token
                 }
             } else if let error = error {
@@ -59,7 +59,7 @@ class AccountManager {
             }
             
             DispatchQueue.main.async {
-                self?.router.isCheckingLogin = false
+                self?.navState.isCheckingLogin = false
             }
         })
     }
@@ -74,8 +74,8 @@ class AccountManager {
         }
         
         SecureStorage().deleteToken(accountId: accountId)
-        router.tabSelection = 0
-        router.isAuthed = false
+        navState.tabSelection = 0
+        navState.isAuthed = false
     }
     
 }

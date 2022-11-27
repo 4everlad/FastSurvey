@@ -12,7 +12,7 @@ struct TabController: View, IItemView {
     
     var listener: INavigationContainer?
     
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: NavigationState
     
     var body: some View {
         

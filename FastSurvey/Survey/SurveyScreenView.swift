@@ -21,20 +21,29 @@ struct SurveyScreenView: View, IItemView {
         NavigationView {
             LoadingView(isShowing: $viewModel.isLoading) {
                 VStack(alignment: .leading, spacing: 32) {
-                    Text(viewModel.survey.title)
-                        .font(.title)
-                    Text(viewModel.survey.description)
-                    
-                    HStack {
-                        Text("Upvoted: \(viewModel.upCounter)")
-                            .foregroundColor(.green)
-                        
-                        Spacer()
-                        
-                        Text("Downvoted: \(viewModel.downCounter)")
-                            .foregroundColor(.red)
+                    Section {
+                        Text(viewModel.survey.title)
+                            .font(.title)
+                        Text(viewModel.survey.description)
                     }
                     
+                    Section {
+                        VStack {
+                            HStack {
+                                Image(systemName: "hand.thumbsup")
+                                    .foregroundColor(Constants.Colors.goodColor)
+                                Text("\(viewModel.upCounter)")
+                                    .foregroundColor(Constants.Colors.goodColor)
+                            }
+                            
+                            HStack {
+                                Image(systemName: "hand.thumbsdown")
+                                    .foregroundColor(Constants.Colors.badColor)
+                                Text("\(viewModel.downCounter)")
+                                    .foregroundColor(Constants.Colors.badColor)
+                            }
+                        }
+                    }
                 }
                 .navigationBarTitle(Text("Survey"))
                 .navigationBarTitleDisplayMode(.inline)

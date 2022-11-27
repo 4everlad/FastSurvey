@@ -36,7 +36,7 @@ class NetworkClient {
         self.urlDataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse,
                   let data = data else {
-                      completion(.failure(CustomError(message: "Empty")))
+                      completion(.failure(CustomError(message: "No response")))
                       return
                   }
             
@@ -44,7 +44,7 @@ class NetworkClient {
                 if let json = String(data: data, encoding: .utf8) {
                     completion(.failure(CustomError(message: json)))
                 } else {
-                    completion(.failure(CustomError(message: "Empty")))
+                    completion(.failure(CustomError(message: "Error code \(httpResponse.statusCode)")))
                 }
                 return
             }
@@ -71,14 +71,14 @@ class NetworkClient {
             let response = content.1
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                return .failure(CustomError(message: "No http response"))
+                return .failure(CustomError(message: "No response"))
             }
             
             guard httpResponse.statusCode == 200 else {
                 if let json = String(data: data, encoding: .utf8) {
                     return .failure(CustomError(message: json))
                 } else {
-                    return .failure(CustomError(message: "Empty"))
+                    return .failure(CustomError(message: "Error code \(httpResponse.statusCode)"))
                 }
             }
             

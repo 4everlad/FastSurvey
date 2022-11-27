@@ -14,7 +14,6 @@ class SurveyFeedViewModel: ObservableObject {
     let accountManager = AccountManager.shared
     
     var canLoad = true
-    
     var currentSurveysCount: Int = 0
     
     func getSurveys() {
