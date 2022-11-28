@@ -41,21 +41,9 @@ final class SignupViewModel: ObservableObject {
     @Published private(set)var errorMessage: String = ""
     @Published var isLoading = false
     
-    @Published var showBottomAge = false {
-        didSet {
-            print("showBottomAge changed: \(showBottomAge)")
-        }
-    }
-    @Published var showBottomGender = false {
-        didSet {
-            print("showBottomGender changed: \(showBottomGender)")
-        }
-    }
-    @Published var showBottomCountry = false {
-        didSet {
-            print("showBottomAge changed: \(showBottomCountry)")
-        }
-    }
+    @Published var showBottomAge = false
+    @Published var showBottomGender = false
+    @Published var showBottomCountry = false
     
     private(set)var allGenders: [String] = Gender.allCases.map { $0.rawValue }
     private(set)var allAges: [Int] = Array<Int>(18...99)
