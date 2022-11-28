@@ -1,6 +1,6 @@
 # FastSurvey
 
-App for creating fast and easy surveys
+App for creation and managing fast and easy surveys
 
 [API Docs](https://documenter.getpostman.com/view/9466539/UVsTphNP#intro)
 
@@ -20,6 +20,6 @@ App for creating fast and easy surveys
 * URLSession + Codable
 * Async/Await
 * UserDefaults
-* Keychain
+* [KeychainWrapper](https://medium.com/@rodolfo.alcantara/simple-keychain-wrapper-in-swift-a7088ea7043d)
 * SwiftPM
 * [SwiftUINavigator](https://github.com/anioutkazharkova/swiftuinavigator)
