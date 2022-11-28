@@ -10,16 +10,12 @@ import KeychainWrapper
 
 class SecureStorage {
     
-    init() {
-        
-    }
-    
     func setToken(token: String, accountId: String) {
         do {
             guard let token = token.data(using: .utf8) else { return }
             try KeychainWrapper.set(value: token, account: accountId)
         } catch {
-            debugPrint("ffff Keychain setting token error")
+            debugPrint("Keychain token setting error")
         }
     }
     
@@ -35,7 +31,7 @@ class SecureStorage {
             
             return token
         } catch {
-            debugPrint("ffff Keychain getting token error")
+            debugPrint("Keychain getting token error")
             return nil
         }
     }
@@ -44,8 +40,12 @@ class SecureStorage {
         do {
             try KeychainWrapper.delete(account: accountId)
         } catch {
-            debugPrint("ffff Keychain delete token error")
+            debugPrint("Keychain delete token error")
         }
+    }
+    
+    init() {
+        
     }
 }
 

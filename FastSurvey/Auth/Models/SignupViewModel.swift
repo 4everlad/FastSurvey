@@ -35,7 +35,7 @@ final class SignupViewModel: ObservableObject {
     }
     
     @Published var age: Int = 18
-    @Published var gender: String = "Female"
+    @Published var gender: String = "Male"
     @Published var country: String = "ru"
     
     @Published private(set)var errorMessage: String = ""

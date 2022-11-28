@@ -11,18 +11,21 @@ import UIKit
 class AccountManager {
     
     static let shared = AccountManager()
+    private let accountStorage = AccountStorage()
+    private let secureStorage = SecureStorage()
+    private let networkClient = NetworkClient()
     
     private(set)var token: String? {
         willSet {
             guard let accountId = self.accountId else { return }
             guard let token = newValue else { return }
-            SecureStorage().setToken(token: token, accountId: accountId)
+            secureStorage.setToken(token: token, accountId: accountId)
         }
     }
     
     private(set)var accountId: String? {
         willSet {
-            AccountStorage().accountId = newValue
+            accountStorage.accountId = newValue
         }
     }
     
@@ -47,7 +50,7 @@ class AccountManager {
         
         navState.isCheckingLogin = true
         
-        NetworkClient().getUserData(token: token, completion: { [weak self] (user, error) in
+        networkClient.getUserData(token: token, completion: { [weak self] (user, error) in
             if let json = user {
                 DispatchQueue.main.async {
                     self?.userModel.user.update(with: json)
@@ -73,7 +76,7 @@ class AccountManager {
             return
         }
         
-        SecureStorage().deleteToken(accountId: accountId)
+        secureStorage.deleteToken(accountId: accountId)
         navState.tabSelection = 0
         navState.isAuthed = false
     }
