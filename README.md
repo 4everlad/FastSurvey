@@ -22,4 +22,4 @@ App for creating fast and easy surveys
 * UserDefaults
 * Keychain
 * SwiftPM
-* [SwiftUINavigation](https://github.com/anioutkazharkova/swiftuinavigator)
+* [SwiftUINavigator](https://github.com/anioutkazharkova/swiftuinavigator)
