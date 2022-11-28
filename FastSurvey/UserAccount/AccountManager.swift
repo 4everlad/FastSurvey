@@ -11,6 +11,7 @@ import UIKit
 class AccountManager {
     
     static let shared = AccountManager()
+    
     private let accountStorage = AccountStorage()
     private let secureStorage = SecureStorage()
     private let networkClient = NetworkClient()
