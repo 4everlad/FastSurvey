@@ -24,7 +24,7 @@ struct VoteSurveyScreenView: View, IItemView {
             LoadingView(isShowing: $viewModel.isLoading) {
                 VStack(alignment: .leading, spacing: 32) {
                     Text(viewModel.survey.title)
-                        .font(.title)
+                        .fontWeight(.bold)
                     Text(viewModel.survey.description)
                     VoteView(viewModel: viewModel)
                     Spacer()

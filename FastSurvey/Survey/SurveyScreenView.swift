@@ -23,7 +23,7 @@ struct SurveyScreenView: View, IItemView {
                 VStack(alignment: .leading, spacing: 32) {
                     Section {
                         Text(viewModel.survey.title)
-                            .font(.title)
+                            .fontWeight(.bold)
                         Text(viewModel.survey.description)
                     }
                     
