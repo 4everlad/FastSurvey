@@ -1,6 +1,6 @@
 # FastSurvey
 
-App for creating fast and easy surveys
+App for creation and managing fast and easy surveys
 
 [API Docs](https://documenter.getpostman.com/view/9466539/UVsTphNP#intro)
 
