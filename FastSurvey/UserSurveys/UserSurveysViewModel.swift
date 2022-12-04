@@ -9,7 +9,8 @@ import Foundation
 
 class UserSurveysViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     @Published var surveys: [Survey] = []
     @Published var isLoading: Bool = false
@@ -26,7 +27,7 @@ class UserSurveysViewModel: ObservableObject {
 
         isLoading = true
         
-        NetworkClient().createSurvey(token: token, params: params, completion: { [weak self] (survey, error) in
+        networkClient.createSurvey(token: token, params: params, completion: { [weak self] (survey, error) in
                 
                 if let json = survey {
                     let survey = Survey(with: json)
@@ -48,7 +49,7 @@ class UserSurveysViewModel: ObservableObject {
             return
         }
         
-        NetworkClient().getUserSurveys(token: token, completion: { [weak self] (surveysJson, error) in
+        networkClient.getUserSurveys(token: token, completion: { [weak self] (surveysJson, error) in
             if let surveys = surveysJson {
                 let userSurveys: [Survey] = surveys.compactMap {
                     let survey = Survey(with: $0)
@@ -74,7 +75,7 @@ class UserSurveysViewModel: ObservableObject {
         
         Task {
             do {
-                let result = await NetworkClient().removeSurveyAsync(token: token, id: survey.id)
+                let result = await networkClient.removeSurveyAsync(token: token, id: survey.id)
                 guard result == true else { return }
                 guard let index = self.surveys.firstIndex(where: {$0.sid == survey.sid}) else { return }
                 
@@ -96,7 +97,7 @@ class UserSurveysViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
+        networkClient.updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 let survey = Survey(with: json)
