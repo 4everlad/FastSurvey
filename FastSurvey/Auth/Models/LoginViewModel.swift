@@ -9,7 +9,8 @@ import Foundation
 
 final class LoginViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     @Published var email: String = "" {
         didSet {
@@ -55,7 +56,7 @@ final class LoginViewModel: ObservableObject {
         isLoading = true
         let params = LoginParams(email: email, password: password)
         
-        NetworkClient().makeLogin(params: params, completion: { result, message  in
+        networkClient.makeLogin(params: params, completion: { result, message  in
             
             if result == true {
                 self.accountManager.set(token: message)

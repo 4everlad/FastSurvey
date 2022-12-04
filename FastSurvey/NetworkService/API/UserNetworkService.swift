@@ -15,6 +15,7 @@ extension NetworkClient: UserNetworkService {
     func getUserData(token: String, completion: @escaping (UserDataJSON?, Error?) -> ()) {
         let endpoint = "profile"
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: endpoint, method: .get, completion: { (result: Result<ProfileJSON,Error>) in

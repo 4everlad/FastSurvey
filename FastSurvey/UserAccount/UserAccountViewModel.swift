@@ -9,7 +9,8 @@ import Foundation
 
 class UserAccountViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     @Published var user: User = User()
     var isLoading = false
@@ -21,7 +22,7 @@ class UserAccountViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().getUserData(token: token, completion: { [weak self] (user, error) in
+        networkClient.getUserData(token: token, completion: { [weak self] (user, error) in
             if let json = user {
                 DispatchQueue.main.async {
                     self?.user.update(with: json)

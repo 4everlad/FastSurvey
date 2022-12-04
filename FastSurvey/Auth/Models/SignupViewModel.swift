@@ -14,7 +14,8 @@ enum Gender: String, CaseIterable {
 
 final class SignupViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     @Published var username: String = "" {
         didSet {
@@ -83,7 +84,7 @@ final class SignupViewModel: ObservableObject {
         let userData = UserDataJSON(name: username, email: email, age: age, sex: gender, countryCode: country)
         let params = SignupParams(password: password, data: userData)
         
-        NetworkClient().makeSignup(params: params, completion: { result, message  in
+        networkClient.makeSignup(params: params, completion: { result, message  in
             
             if result == true {
                 self.accountManager.set(token: message)
