@@ -23,7 +23,9 @@ struct StateButton {
 
 class VoteSurveyViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
+    
     @Published var survey: Survey = Survey() {
         didSet {
             setVoteType()
@@ -62,7 +64,7 @@ class VoteSurveyViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().getSurvey(token: token, id: id, completion: { [weak self] (survey, error) in
+        networkClient.getSurvey(token: token, id: id, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 DispatchQueue.main.async {
@@ -90,7 +92,7 @@ class VoteSurveyViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().makeVote(token: token, params: params, completion: { [weak self] (survey, error) in
+        networkClient.makeVote(token: token, params: params, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 DispatchQueue.main.async {

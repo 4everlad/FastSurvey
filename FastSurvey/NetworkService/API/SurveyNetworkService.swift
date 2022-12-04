@@ -30,6 +30,7 @@ extension NetworkClient: SurveyNetworkService {
             queryItems["startAfter"] = startAfter
         }
         
+        self.config = NetworkConfiguration()
         self.config.setQuiryItems(items: queryItems)
         self.config.setToken(token: token)
         
@@ -47,6 +48,7 @@ extension NetworkClient: SurveyNetworkService {
         
         let endpoint = "survey/\(id)"
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: endpoint, method: .get) { (result: Result<SurveyJSON,Error>) in
@@ -67,6 +69,7 @@ extension NetworkClient: SurveyNetworkService {
             return
         }
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: path, method: .post, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in

@@ -15,7 +15,7 @@ enum Method: String {
 }
 
 class NetworkClient {
-    let config = NetworkConfiguration()
+    var config = NetworkConfiguration()
     
     private lazy var urlSession: URLSession? = {
         let configuration = URLSessionConfiguration.default

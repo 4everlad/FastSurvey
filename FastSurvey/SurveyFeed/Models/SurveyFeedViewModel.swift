@@ -11,7 +11,8 @@ import SwiftUI
 class SurveyFeedViewModel: ObservableObject {
     @Published var surveys: [Survey] = []
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     var canLoad = true
     var currentSurveysCount: Int = 0
@@ -32,7 +33,7 @@ class SurveyFeedViewModel: ObservableObject {
         
         canLoad = false
         
-        NetworkClient().getSurveyFeed(token: token, count: 10, startAfter: startAfterId, completion: { [weak self] (feed, error) in
+        networkClient.getSurveyFeed(token: token, count: 10, startAfter: startAfterId, completion: { [weak self] (feed, error) in
             if let surveys = feed {
                 let surveyFeed: [Survey] = surveys.compactMap {
                     let survey = Survey(with: $0)
