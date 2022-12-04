@@ -90,6 +90,7 @@ extension NetworkClient: SurveyNetworkService {
             return
         }
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: path, method: .post, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in
@@ -106,6 +107,7 @@ extension NetworkClient: SurveyNetworkService {
         
         let path = "profile"
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: path, method: .get, completion: { (result: Result<ProfileJSON,Error>) in
@@ -126,6 +128,7 @@ extension NetworkClient: SurveyNetworkService {
         
         let endpoint = "survey/\(id)"
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: endpoint, method: .delete, completion: { (result: Result<SuccessResponse,Error>) in
@@ -143,6 +146,7 @@ extension NetworkClient: SurveyNetworkService {
     func removeSurveyAsync(token: String, id: String) async -> Bool {
         let endpoint = "survey/\(id)"
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
 
         let result = await self.requestAsync(path: endpoint, method: .delete) as Result<SuccessResponse, Error>
@@ -161,6 +165,7 @@ extension NetworkClient: SurveyNetworkService {
             return
         }
         
+        self.config = NetworkConfiguration()
         self.config.setToken(token: token)
         
         self.request(path: endpoint, method: .put, params: encodedParams, completion: { (result: Result<SurveyJSON,Error>) in

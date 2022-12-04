@@ -9,7 +9,8 @@ import Foundation
 
 class SurveyViewModel: ObservableObject {
     
-    let accountManager = AccountManager.shared
+    private let accountManager = AccountManager.shared
+    private let networkClient = NetworkClient()
     
     @Published var survey: Survey = Survey() {
         didSet {
@@ -36,7 +37,7 @@ class SurveyViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().getSurvey(token: token, id: id, completion: { [weak self] (survey, error) in
+        networkClient.getSurvey(token: token, id: id, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 DispatchQueue.main.async {
@@ -58,7 +59,7 @@ class SurveyViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
+        networkClient.updateSurvey(token: token, params: params, id: surveyId, completion: { [weak self] (survey, error) in
             
             if let json = survey {
                 let survey = Survey(with: json)
@@ -80,7 +81,7 @@ class SurveyViewModel: ObservableObject {
         
         isLoading = true
         
-        NetworkClient().removeSurvey(token: token, id: survey.id, completion: { [weak self] result, message in
+        networkClient.removeSurvey(token: token, id: survey.id, completion: { [weak self] result, message in
             
             guard result == true else {
                 self?.isLoading = false
