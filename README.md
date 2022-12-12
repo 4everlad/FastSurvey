@@ -3,7 +3,6 @@
 App for creation and managing fast and easy surveys
 
 * [API Docs](https://documenter.getpostman.com/view/9466539/UVsTphNP#intro)
-* [Presentation](https://drive.google.com/drive/folders/1CiOHVDXc2QeZnx6L_Jo9-c6VU6eIOJY0)
 
 ## Functionality
 
